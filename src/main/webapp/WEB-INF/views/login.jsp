@@ -33,7 +33,7 @@
 </head>
 <body>
 	<div align="center">
-		<h2>User Registration</h2>
+		<h2>User Login</h2>
 		<form:form action="login" method="post" modelAttribute="user">
 			
 			<form:label path="email">E-mail:</form:label>
@@ -43,6 +43,7 @@
 			<form:password path="password"/><br/>
 				
 			<form:button>Login</form:button>
+			<a href="">New User? Register Here</a>
 		</form:form>
 	</div>
 </body>
