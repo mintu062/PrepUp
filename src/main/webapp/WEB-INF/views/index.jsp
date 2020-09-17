@@ -7,7 +7,7 @@
 <title>Spring Boot Application</title>
 </head>
 <body>
-	<h1>Spring Boot Application</h1>
+	<h1>PrepUp</h1>
 	<a href="login">login</a>
 </body>
 </html>

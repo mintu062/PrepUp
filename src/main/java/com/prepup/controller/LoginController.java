@@ -38,7 +38,7 @@ public class LoginController {
         	
         }else {
         	mav.setViewName("login");
-        	mav.addObject("user",user);//pass error
+        	mav.addObject("error","Invalid Username and Password");//pass error
         }            
         return mav;
     }

@@ -45,5 +45,16 @@ public class UserDetailsDao{
 	                				)
 	                		);
 	    }
+	    
+	    public int createUser(UserDetailsVO user) {
+//	    	    	String sql="INSERT INTO userdetails VALUES ('?', '?', '?', '?', '?', '?', '?', ?, '?')";ggggg
+	    	    	String sql="INSERT INTO `userdetails` (FName, MName,LName, Phnumber,EmailID, Password, InstName, Role)"
+	    	    			+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+	    	    	
+	    			  return jdbcTemplate .update(sql,new Object[]
+	    			  {user.getFname(),user.getMname(),user.getLname(),user.getPhnumber(),user.
+	    			  getEmailid(),
+	    			  user.getPassword(),user.getInstname(),user.getRole()},Integer.class );
+	    }
 
 }

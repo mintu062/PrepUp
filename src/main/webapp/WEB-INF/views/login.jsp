@@ -5,31 +5,9 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link href="css/login.css" rel="stylesheet">
 <title>User Login Form</title>
-<style type="text/css">
-	label {
-		display: inline-block;
-		width: 200px;
-		margin: 5px;
-		text-align: left;
-	}
-	input[type=text], input[type=password], select {
-		width: 200px;	
-	}
-	input[type=radio] {
-		display: inline-block;
-		margin-left: 45px;
-	}
-	input[type=checkbox] {
-		display: inline-block;
-		margin-right: 190px;
-	}	
-	
-	button {
-		padding: 10px;
-		margin: 10px;
-	}
-</style>
+
 </head>
 <body>
 	<div align="center">
@@ -41,7 +19,7 @@
 			
 			<form:label path="password">Password:</form:label>
 			<form:password path="password"/><br/>
-				
+			<p>${error}</p>
 			<form:button>Login</form:button>
 			<a href="">New User? Register Here</a>
 		</form:form>
