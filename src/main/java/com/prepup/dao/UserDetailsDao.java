@@ -16,7 +16,7 @@ public class UserDetailsDao{
 	
 	 @Autowired
 	    private JdbcTemplate jdbcTemplate;
-
+	 	
 	    
 	    public int count() {
 	        return jdbcTemplate
