@@ -1,7 +1,8 @@
 package com.prepup.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+//import org.springframework.web.bind.annotation.CrossOrigin;
+//import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,6 +12,7 @@ import com.prepup.rest.model.LoginStatus;
 import com.prepup.service.UserDetailsService;
 import com.prepup.vo.UserDetailsVO;
 
+//@CrossOrigin(origins = "http://domain2.com", maxAge = 3600)
 @RestController
 public class RestLoginController {
 	
