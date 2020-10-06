@@ -102,4 +102,36 @@ public class UserDetailsDao{
 	    	    	return 0;
 
 	    	}
+		public int updateUser(UserDetailsVO user) {
+			
+			String sql="UPDATE userdetails SET FName = ?, MName = ?, LName = ?, Phnumber = ?, InstName = ? WHERE (EmailID = ?)";
+	    	
+	    	jdbcTemplate = new JdbcTemplate(dataSource);
+	    	System.out.println(user);
+	    	Connection con = null;
+	    	PreparedStatement st = null;
+	    	try {
+				con = dataSource.getConnection();
+				st = con.prepareStatement(sql);
+				st.setString(1,user.getFname());
+				st.setString(2,user.getMname());
+				st.setString(3,user.getLname());
+				st.setString(4,user.getPhnumber());
+				st.setString(5,user.getInstname());
+				st.setString(6, user.getEmailid());
+				return st.executeUpdate();
+			} catch (SQLException e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}finally {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}
+			return 0;
+		}
 	    }

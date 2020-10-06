@@ -5,30 +5,27 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.prepup.model.User;
-import com.prepup.model.UserDetails;
 import com.prepup.model.UserUpdateDetails;
-import com.prepup.rest.model.LoginStatus;
 import com.prepup.rest.model.RegistrationStatus;
 import com.prepup.service.UserDetailsService;
-import com.prepup.vo.UserDetailsVO;
 
 @RestController
-public class RestRegistrationController {
+public class RestProfileUpdateController {
+
 	@Autowired
 	UserDetailsService userDetailsService;
 	
-	@PostMapping("rest/registration")
-	public RegistrationStatus registration(@RequestBody UserDetails userDetails) {
+	@PostMapping("rest/profileupdate")
+	public RegistrationStatus profileupdate(@RequestBody UserUpdateDetails userUpdateDetails) {
 		RegistrationStatus registrationStatus = new RegistrationStatus();
-		Boolean status=userDetailsService.createUser(userDetails);
+		Boolean status=userDetailsService.updateUser(userUpdateDetails);
 		if(status==true) {
 			registrationStatus.setStatus_code(200);
-			registrationStatus.setMessage("Registation Successful");
+			registrationStatus.setMessage("Profile Updated Successfully");
 		}
 		else {
 			registrationStatus.setStatus_code(400);
-			registrationStatus.setMessage("Registration Failed");
+			registrationStatus.setMessage("Profile Update Failed!");
 		}
 		
 		

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.prepup.dao.UserDetailsDao;
 import com.prepup.model.User;
 import com.prepup.model.UserDetails;
+import com.prepup.model.UserUpdateDetails;
 import com.prepup.vo.UserDetailsVO;
 
 @Service
@@ -62,5 +63,30 @@ public Boolean createUser(UserDetails userdetails) {
 
 		
 	}
+
+public Boolean updateUser(UserUpdateDetails userUpdateDetails) {
+	
+	
+	UserDetailsVO userDetailsVO= new UserDetailsVO();
+	userDetailsVO.setFname(userUpdateDetails.getFname());
+	userDetailsVO.setMname(userUpdateDetails.getMname());
+	userDetailsVO.setLname(userUpdateDetails.getLname());
+	userDetailsVO.setPhnumber(userUpdateDetails.getPhone());
+	userDetailsVO.setEmailid(userUpdateDetails.getEmail());
+	userDetailsVO.setInstname(userUpdateDetails.getInstitute());
+	
+
+	
+	Boolean isSuccess=Boolean.FALSE;
+	 if(userdetailsdao.updateUser(userDetailsVO)>0) {
+        isSuccess=Boolean.TRUE;
+        }        
+        else {
+        	System.out.println("Registration failed");
+        }
+	 return isSuccess;
+
+	
+}
 
 }
