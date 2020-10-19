@@ -18,7 +18,7 @@ public class RestRegistrationController {
 	UserDetailsService userDetailsService;
 	
 	@PostMapping("rest/registration")
-	public RegistrationStatus login(@RequestBody UserDetails userDetails) {
+	public RegistrationStatus registration(@RequestBody UserDetails userDetails) {
 		RegistrationStatus registrationStatus = new RegistrationStatus();
 		Boolean status=userDetailsService.createUser(userDetails);
 		if(status==true) {

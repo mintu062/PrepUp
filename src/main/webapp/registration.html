@@ -40,42 +40,45 @@
 				<form class="login100-form validate-form" role="from">
 								<div ><a class="ind" href="index.html">Back to home</a></div><br>
 					<span class="login100-form-title p-b-26">
-						Welcome, Register Here
+						Welcome, Student Registration Page
 					</span>
 					<span align="center" ><h3 style="color: red">{{message}}</h3></span>
-					<span align="center" ><h3 style="color: green">{{messagesuccess}}</h3></span>
+<!-- 					<span align="center" ><h3 style="color: red">{{message}}</h3></span>
+					<span align="center" ><h3 style="color: green">{{messagesuccess}}</h3></span> -->
                     <div class="wrap-input100 validate-input" data-validate = "Enter Character Only">
-						<input path="fname" class="input100" type="text" name="fname" />
+						<input path="fname" class="input100" ng-model="fname" type="text" name="fname" maxlength="15">
 						<span class="focus-input100" data-placeholder="First Name"></span>
 					</div>
                     
                     <div class="wrap-input100" >
-						<input path="mname" class="input100" type="text" name="mname" />
+						<input path="mname" class="input100" ng-model="mname" type="text" name="mname" maxlength="15">
 						<span class="focus-input100" data-placeholder="Middle Name"></span>
 					</div>
                     
                     <div class="wrap-input100 validate-input" data-validate = "Enter Character Only">
-						<input path="lname" class="input100" type="text" name="lname" />
+						<input path="lname" class="input100" ng-model="lname" type="text" name="lname" maxlength="15">
 						<span class="focus-input100" data-placeholder="Last Name"></span>
 					</div>       
                     
                     <div class="wrap-input100 validate-input" data-validate = "Enter Valid phone number">
-						<input path="phone" class="input100" type="number" name="phone" />
+						<input path="phone" class="input100" ng-model="phone" type="number" name="phone" maxlength="10">
 						<span class="focus-input100" data-placeholder="Phone Number"></span>
 					</div>
                     <div class="wrap-input100 validate-input" data-validate = "Valid Institute Name">
-						<input path="institute" class="input100" type="text" name="institute" />
+						<input path="institute" class="input100" ng-model="institute" type="text" name="institute" maxlength="45">
 						<span class="focus-input100" data-placeholder="Institute"></span>
 					</div>
-                    <div class="wrap-input100 " >						
-				        <select id="role" class="input100" path="role"  >
-                            <option>Teacher</option>
-                            <option>Student</option>
-                        </select>
-                        
+					
+                    <div class="wrap-input100 validate-input" data-validate = "Role Name">
+						<select  class="input100" ng-model="role" type="role" placeholder="Select Role" name="role" maxlength="45">
+							<option selected="trues" value="Teacher">Teacher</option>
+							<option value="Student">Student</option>
+						</select>
+						<span class="focus-input100" ></span>
 					</div>
-                    <div class="wrap-input100 validate-input" data-validate = "Valid email Id">
-						<input path="email" class="input100" type="email" name="email" />
+					
+					<div class="wrap-input100 validate-input" data-validate = "Valid email Id">
+						<input path="email" class="input100" ng-model="email" type="email" name="email" maxlength="45">
 						<span class="focus-input100" data-placeholder="Email ID"></span>
 					</div>
 
@@ -84,14 +87,14 @@
 						<span class="btn-show-pass">
 							<i class="zmdi zmdi-eye"></i>
 						</span>
-						<input path="password" class="input100" type="password" name="pass" />
+						<input path="password" class="input100" ng-model="password" type="password" name="password" maxlength="20">
 						<span class="focus-input100" data-placeholder="Password"></span>
 					</div>
 
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn">
+							<button ng-click="postData()" [disabled]="!form.valid" class="login100-form-btn">
 								Register
 							</button>
 						</div>
@@ -113,7 +116,6 @@
 	
 
 <!--	<div id="dropDownSelect1"></div>-->
-	
 <!--===============================================================================================-->
 	<script src="vendor/vendorlogin/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
