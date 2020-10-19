@@ -6,12 +6,10 @@ var temp;
 app.controller('LoginController', function ($scope, $http,userService) {
 
     $scope.postData = function() {
-		
 		const body={
 	"email":$scope.email,
 	"password":$scope.password
 }
-	
        $http.post(baseurl+"/login",body)
             .then(function(resp) {
                 /*$scope.token = resp.data.token;*/
@@ -19,37 +17,19 @@ app.controller('LoginController', function ($scope, $http,userService) {
 				if(status_code==200)				
 				{	
 					const rolee =	resp.data.userDetails.role;
-					sessionStorage.setItem("userDetails", JSON.stringify(resp.data.userDetails));
-					
-					/*alert(sessionStorage.getItem("userDetails"));*/
-					
-					//userService.setData(resp.data.userDetails.emailid);
-					/*alert(resp.data.userDetails.emailid);*/
-					
+					sessionStorage.setItem("userDetails", JSON.stringify(resp.data.userDetails));					
 					if (rolee == "teacher") 
-						{
-						
-	                    location.replace("teacherdash.html");
-						
+						{						
+	                    location.replace("teacherdash.html");						
 	                } else 
-						{
-						
-	                    location.replace("studentdash.html");
-						
-	                }
-				}
+						{						
+	                    location.replace("studentdash.html");						
+	                }				}
 				else
-				{	
-					
-					$scope.message= resp.data.message;
-					
-					
+				{						
+					$scope.message= resp.data.message;					
 				}
-				
-     
             }, function error(resp) {
-		/*alert(message);*/
-      /*$scope.error = 'Invalid credentials!!!';*/
     });
     };
 });
@@ -75,22 +55,55 @@ app.controller('RegistrationController', function ($scope, $http ) {
 				{	
 					alert("success");
 					location.replace(registration.html);
-					
-
 				}
 				else
 				{
 					alert(resp.data.message+", User with given credentials already exists");
 					location.replace(registration.html);
-					$scope.message= resp.data.message;
-					
-					
+					$scope.message= resp.data.message;					
 				}
 				
      
             }, function error(resp) {
 		/*alert(message);*/
       /*$scope.error = 'Invalid credentials!!!';*/
+    });
+    };
+});
+
+
+app.controller('UpdateController', function ($scope, $http ) {
+
+  $scope.postData = function() {		
+		const body2={
+			"fname":$scope.fname,"mname":$scope.mname,"lname":$scope.lname,"phone":$scope.phone,
+	"email":$scope.email,
+	"institute":$scope.institute
+} 
+alert(JSON.stringify(body2));
+       $http.post(baseurl+"/profileupdate",body2)
+            .then(function(resp) {
+                /*$scope.token = resp.data.token;*/
+               const status_code = resp.data.status_code;
+				if(status_code==200)				
+				{	
+					alert("success");
+/*					const rolee =	resp.data.userDetails.role;
+									
+					if (rolee == "teacher") 
+						{						
+	                    location.replace("teacherdash.html");						
+	                } else 
+						{						
+	                    location.replace("studentdash.html");						
+	                }		*/		}
+				else
+				{						
+					$scope.message= resp.data.message;
+										alert("failed");
+				}
+            }, function error(resp) {
+    
     });
     };
 });
