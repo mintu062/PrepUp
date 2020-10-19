@@ -40,7 +40,7 @@
 			<div class="wrap-login100">
 			
 				<form  class="login100-form validate-form">
-				<div ><a class="ind" href="/">Back to home</a></div>
+				<div ><a class="ind" href="index.html">Back to home</a></div>
 				<br>
 					<span class="login100-form-title p-b-26">
 						Welcome
@@ -60,12 +60,10 @@
 						<span class="focus-input100" data-placeholder="Password"></span>
 					</div>
  					<span align="center" ><h3 style="color: red">{{message}}</h3></span>
- 					<!--
-					<span align="center" ><h3 style="color: green">${messagesuccess}</h3></span> -->
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<button ng-click="postData()" class="login100-form-btn">
+							<button ng-click="postData()" [disabled]="!form.valid" class="login100-form-btn">
 								Login
 							</button>
 						</div>
@@ -76,7 +74,7 @@
 							Don't have an account?
 						</span>
 
-						<a class="txt2" href="registration">
+						<a class="txt2" href="registration.html">
 							Sign Up
 						</a>
 					</div>
