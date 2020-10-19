@@ -13,6 +13,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.prepup.model.ChangePassDetails;
 import com.prepup.model.User;
 import com.prepup.vo.UserDetailsVO;
 
@@ -134,4 +135,37 @@ public class UserDetailsDao{
 			}
 			return 0;
 		}
-	    }
+		
+public int changePass(ChangePassDetails changePassDetails) {
+			
+			System.out.println(changePassDetails.getEmaiId());
+			System.out.println(changePassDetails.getOldPass());
+			System.out.println(changePassDetails.getNewPass());
+			String sql="UPDATE userdetails SET password = ? WHERE EmailID = ? AND password=?";
+	    	
+	    	jdbcTemplate = new JdbcTemplate(dataSource);
+	    	Connection con = null;
+	    	PreparedStatement st = null;
+	    	try {
+				con = dataSource.getConnection();
+				st = con.prepareStatement(sql);
+				st.setString(1,changePassDetails.getNewPass());
+				st.setString(2,changePassDetails.getEmaiId());
+				st.setString(3,changePassDetails.getOldPass());
+				return st.executeUpdate();
+			} catch (SQLException e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}finally {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}
+			return 0;
+		}
+		
+}

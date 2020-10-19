@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.prepup.dao.UserDetailsDao;
+import com.prepup.model.ChangePassDetails;
 import com.prepup.model.User;
 import com.prepup.model.UserDetails;
 import com.prepup.model.UserUpdateDetails;
@@ -83,6 +84,23 @@ public Boolean updateUser(UserUpdateDetails userUpdateDetails) {
         }        
         else {
         	System.out.println("Registration failed");
+        }
+	 return isSuccess;
+
+	
+}
+
+public Boolean changePass(ChangePassDetails changePassDetails) {
+	
+	
+
+	
+	Boolean isSuccess=Boolean.FALSE;
+	 if(userdetailsdao.changePass(changePassDetails)>0) {
+        isSuccess=Boolean.TRUE;
+        }        
+        else {
+        	System.out.println("Old Password is wrong");
         }
 	 return isSuccess;
 
