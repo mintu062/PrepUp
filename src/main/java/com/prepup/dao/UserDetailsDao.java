@@ -138,9 +138,6 @@ public class UserDetailsDao{
 		
 public int changePass(ChangePassDetails changePassDetails) {
 			
-			System.out.println(changePassDetails.getEmaiId());
-			System.out.println(changePassDetails.getOldPass());
-			System.out.println(changePassDetails.getNewPass());
 			String sql="UPDATE userdetails SET password = ? WHERE EmailID = ? AND password=?";
 	    	
 	    	jdbcTemplate = new JdbcTemplate(dataSource);
