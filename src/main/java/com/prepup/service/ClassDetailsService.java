@@ -27,7 +27,7 @@ public Boolean createClass(CreateClassDetails classDetails) {
 		
 		char ch='C';
 		Integer uniqueIdint = (int) (System.currentTimeMillis() & 0xfffffff);
-		String uniqueId=ch+Integer.toString(uniqueIdint).substring(4,9);
+		String uniqueId=ch+Integer.toString(uniqueIdint).substring(4,8);
 		classDetailsVO.setClassId(uniqueId);
 
 				String uuid = UUID.randomUUID().toString();
