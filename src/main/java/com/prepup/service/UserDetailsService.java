@@ -79,7 +79,8 @@ public Boolean createUser(UserDetails userdetails) {
 		else
 			ch='S';
 		Integer uniqueIdint = (int) (System.currentTimeMillis() & 0xfffffff);
-		String uniqueId=ch+Integer.toString(uniqueIdint).substring(4,9);
+	    String uniqueIdstr=Integer.toString(uniqueIdint);
+		String uniqueId=ch+Integer.toString(uniqueIdint).substring(uniqueIdstr.length()-4,uniqueIdstr.length());
 		userDetailsVO.setUserid(uniqueId);
 
 		
