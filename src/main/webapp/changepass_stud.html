@@ -25,6 +25,7 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 
+
 		<script src="angjs/angular.min.js"></script>
 		<script src="angjs/angularapp.js"></script>
 </head>
@@ -101,12 +102,18 @@
                                     <li role="separator" class="divider"></li>
                                     <li><a href="update_stud.html"><i class="ti-pencil-alt"></i>  Update Profile</a></li>
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="changepass_stud.html"><i class="ti-settings"></i>  Change password</a></li>
+                                    <li><a href="chnagepass_stud.html"><i class="ti-settings"></i>  Change password</a></li>
                                     <li role="separator" class="divider"></li>
                                     
                                     <li><a href="#" alt="default" data-toggle="modal" data-target="#verticalcenter" ><i class="fa fa-power-off"></i> Logout</a></li>
                                 </ul>
                             </div>
+
+
+
+
+
+
                         </li>
                     </ul>
                 </div>
@@ -143,7 +150,7 @@
 
                         <li> <a class=" waves-effect waves-dark" href="studentdash.html" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Home </span></a>
                         </li>
-                        <li> <a class=" waves-effect waves-dark" href="#" data-toggle="modal" data-target="#exampleModal" aria-expanded="false"><i class="mdi mdi-account-plus"></i><span class="hide-menu">Join Class </span></a>
+                        <li> <a class=" waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account-plus"></i><span class="hide-menu">Join Class </span></a>
                         </li>
 
                         <li> <a class=" waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account-search"></i><span class="hide-menu">My Classes</span></a>
@@ -157,8 +164,7 @@
                 <!-- End Sidebar navigation -->
             </div>
             <!-- End Sidebar scroll-->
-        </aside>
-        <!-- ============================================================== -->
+        </aside>  <!-- ============================================================== -->
         <!-- End Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
         <!-- ============================================================== -->
@@ -170,14 +176,14 @@
             <!-- ============================================================== -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-themecolor">DashBoard</h3>
+                    <h3 class="text-themecolor">Change Password</h3>
                 </div>
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="studentdash.html">Home</a></li>
+                        <li class="breadcrumb-item">Change password</li>
                     </ol>
                 </div>
-
             </div>
             <!-- ============================================================== -->
             <!-- End Bread crumb and right sidebar toggle -->
@@ -206,7 +212,7 @@
                                             </div>
                                             <div ng-controller="logout" class="modal-footer">
                                             <center>
-                                                <a ng-click="postData()" type="button" class="btn btn-danger waves-effect" >Sign out</a>
+                                                <a href="#" ng-click="postData()" type="button" class="btn btn-danger waves-effect" >Sign out</a>
                                                 <a href="#" type="button" class="btn btn-success waves-effect" data-dismiss="modal">Close</a>
                                             </center>
                                             </div>
@@ -215,34 +221,89 @@
                                     </div>
                                     <!-- /.modal-dialog -->
                                 </div>
-                                
-                                
-                                
-                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title" id="exampleModalLabel1">Join Class</h4>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                               
+
+
+                                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card card-outline-info">
+                            <div class="card-header">
+                                <center><h4 class="m-b-0 text-white">Change Password</h4></center>
+                            </div>
+                            <div class="card-body">
+<form ng-controller='ChangepassController' class="form-horizontal" ng-submit="postData()" name="myForm">
+                                    <div class="form-body">
+                                        <span align="center" ><h3 style="color:red">{{message}}</h3></span>
+                                        <br>
+                                          <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="control-label text-right col-md-3">Email</label>
+                                                    <div class="col-md-9">
+                                                        <input type="text" name="email" ng-value="emailid" ng-model="email" class="form-control" readonly="true" /><br>
+                                                       
+                                                         </div>
+                                                </div>
                                             </div>
-                                            <div class="modal-body">
-                                                <form>
-                                                    <div class="form-group">
-                                                        <label for="recipient-name" class="control-label">Class passkey:</label>
-                                                        <input type="text" class="form-control" id="recipient-name1">
+                                            </div>
+                                         <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="control-label text-right col-md-3">Current Password</label>
+                                                    <div class="col-md-9">
+                                                        <input type="password" name="current" ng-model="oldPass"  class="form-control" required="true" /><br>
+                                                         </div>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="control-label text-right col-md-3 required">New Password</label>
+                                                    <div class="col-md-9 controls">
+                                                    <input type="password" name="password" ng-model="pass" id="password" required data-validation-required-message="This field is required" class="form-control" placeholder="" maxlength="30"  required="true" />
+                                                         </div>
+                                                </div>
+                                            </div>
+                                            <!--/span-->
+                                            <div class="col-md-6">
+                                                <div class="form-group  row">
+                                                    <label class="control-label text-right col-md-3 required">Confirm Password</label>
+                                                    <div class="col-md-9 controls">
+                                                        <input type="password" name="password2" id="password2" ng-model="newPass" class="form-control " placeholder="" maxlength="30" data-validation-match-match="password" required="true" />
+                                                         </div>
+                                                </div>
+                                            </div>
+                                            <center>
+                                    <div class="form-actions">
+
+                                        <div class="row" >
+                                            <div class="col-lg-12">
+                                                <div class="row">
+													<div class="col-md-offset-3 col-lg-4"></div>
+                                                    <div class="col-md-offset-3 col-lg-12">
+                                                        <button ng-disabled="myForm.$invalid" id="submit" type="submit" class="btn btn-success">Submit</button>
+                                                        <button onclick="location.href='teacherdash.html'" type="button" class="btn btn-inverse">Cancel</button>
+                                                        <br>
                                                     </div>
-                                                </form>
+                                                    </br>
+                                                </div>
                                             </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">Join Class</button>
-                                            </div>
+                                            
                                         </div>
-                                    </div>
-                                </div>
-                                
-                                
-                                Dashboard
+                                        </div>
+                                    </center>
+
+                                    </hr>
+                                </form>
+  </div>
+                        </div>
+                    </div>
+                </div>
+                
+                        
+
+
                             </div>
                         </div>
                     </div>
@@ -259,19 +320,18 @@
                 <!-- End Right sidebar -->
                 <!-- ============================================================== -->
             </div>
-
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            
             <footer class="footer">
                 © 2020 Prep-UP Web APP
             </footer>
-            
             <!-- ============================================================== -->
             <!-- End footer -->
             <!-- ============================================================== -->
-            
         </div>
         <!-- ============================================================== -->
         <!-- End Page wrapper  -->
@@ -280,11 +340,9 @@
     <!-- ============================================================== -->
     <!-- End Wrapper -->
     <!-- ============================================================== -->
-    
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    
     <script src="assets/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="assets/plugins/bootstrap/js/popper.min.html"></script>
@@ -301,9 +359,22 @@
     <script src="assets/plugins/sparkline/jquery.sparkline.min.js"></script>
     <!--Custom JavaScript -->
     <script src="js/js/custom.min.js"></script>
+
+
+
+    <script src="js/js/validation.js"></script>
+
+    <script>
+        ! function(window, document, $) {
+        "use strict";
+        $("input,select,textarea").not("[type=submit]").jqBootstrapValidation();
+    }(window, document, jQuery);
+    </script>
+
     <!-- ============================================================== -->
     <!-- Style switcher -->
     <!-- ============================================================== -->
     <script src="assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
 </body>
 </html>
+    

@@ -93,8 +93,8 @@
                                     <li>
                                         <div class="dw-user-box"><center>
                                             <div class="u-img"><img src="assets/images/users/1.jpg" alt="user"></div>
-                                            <div class="u-text">
-                                                <h3>djfg</h3>
+                                            <div class="u-text" ng-controller='ViewUser'>
+                                                <h3>{{user}}</h3>
                                                 <p>Teacher </p>
 <!--                                                 <p class="text-muted">Prep-Up</p> -->
                                         </div></center>
@@ -109,12 +109,6 @@
                                     <li><a href="#" alt="default" data-toggle="modal" data-target="#verticalcenter" ><i class="fa fa-power-off"></i> Logout</a></li>
                                 </ul>
                             </div>
-
-
-
-
-
-
                         </li>
                     </ul>
                 </div>
@@ -137,8 +131,8 @@
 
                     </div>
                     <!-- User profile text-->
-                    <div class="profile-text">
-                    <h3>${userDetailsVO.fname}</h3>
+                    <div ng-controller='ViewUser' class="profile-text">
+                    <h3>{{user}}</h3>
                         <h5>Teacher</h5>
            
                     </div>
@@ -149,7 +143,7 @@
                     <ul id="sidebarnav">
                         <li class="nav-devider"></li>
 
-                        <li> <a class=" waves-effect waves-dark" href="teacherDash" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Home </span></a>
+                        <li> <a class=" waves-effect waves-dark" href="teacherdash.html" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Home </span></a>
                         </li>
                         <li> <a class=" waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account-plus"></i><span class="hide-menu">Create Class </span></a>
                         </li>
@@ -182,7 +176,7 @@
                 </div>
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="teacherDash">Home</a></li>
+                        <li class="breadcrumb-item"><a href="teacherdash.html">Home</a></li>
                         <li class="breadcrumb-item">Update Profile</li>
                     </ol>
                 </div>
@@ -217,9 +211,9 @@
                                                 <h4></h4>
                                                 <p></p>
                                             </div>
-                                            <div  class="modal-footer">
+                                            <div ng-controller="logout" class="modal-footer">
                                             <center>
-                                                <a href="#" type="button" class="btn btn-danger waves-effect" >Sign out</a>
+                                                <a href="#" ng-click="postData()" type="button" class="btn btn-danger waves-effect" >Sign out</a>
                                                 <a href="#" type="button" class="btn btn-success waves-effect" data-dismiss="modal">Close</a>
                                             </center>
                                             </div>
@@ -243,7 +237,7 @@
                             
                             <div class="card-body">
 
- <form ng-controller='UpdateController'  class="form-horizontal" role="form">
+ <form ng-controller='UpdateController' ng-submit="postData()" class="form-horizontal" name="myForm" role="form">
                                     <div class="form-body">
                                         <h3 class="box-title">Person Info</h3>
                                         <hr class="m-t-0 m-b-40">
@@ -252,7 +246,7 @@
                                                 <div class="form-group row">
                                                     <label class="control-label text-right col-md-3 required">First Name</label>
                                                     <div class="col-md-9">
-                                                    <input type="text" path="fname" name="fname" ng-model="fname" id="fname" class="form-control"  maxlength="30"  required="true">
+                                                    <input type="text" path="fname" name="fname" ng-value="fname" ng-model="fname" id="fname" class="form-control"  maxlength="30"  required="true">
                                                          </div>
                                                 </div>
                                             </div>
@@ -261,7 +255,7 @@
                                                 <div class="form-group  row">
                                                     <label class="control-label text-right col-md-3 ">Middle Name</label>
                                                     <div class="col-md-9">
-                                                        <input type="text" path="mname" name="mname" ng-model="mname" id="mname" class="form-control " placeholder="" maxlength="30">
+                                                        <input type="text" path="mname" name="mname" ng-value="mname" ng-model="mname" id="mname" class="form-control " placeholder="" maxlength="30">
                                                          </div>
                                                 </div>
                                             </div>
@@ -272,7 +266,7 @@
                                                 <div class="form-group row">
                                                     <label class="control-label text-right col-md-3 required">Last Name</label>
                                                     <div class="col-md-9">
-                                                    <input type="text" path="lname" name="lname" ng-model="lname" id="lname" class="form-control"  maxlength="30"  required="true" >
+                                                    <input type="text" path="lname" name="lname" ng-value="lname"  ng-model="lname" id="lname" class="form-control"  maxlength="30"  required="true" >
                                                          </div>
                                                 </div>
                                             </div>
@@ -286,9 +280,9 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group row">
-                                                    <label class="control-label text-right col-md-3 required">Phone Number </label>
+                                                    <label class="control-label text-right col-md-3 required">Phone Number</label>
                                                     <div class="col-md-9">
-                                                        <input path="phone"  ng-model="phone" type="number" name="phone" maxlength="10" class="form-control" required="true" >
+                                                        <input type="number" path="phone" name="phone" ng-value="phone" ng-model="phone"   id="phone" maxlength="10"   class="form-control"  required="true" >
                                                     </div>
                                                 </div>
                                             </div>
@@ -296,7 +290,7 @@
                                                 <div class="form-group row">
                                                     <label class="control-label text-right col-md-3 required">Email ID</label>
                                                     <div class="col-md-9">
-                                                        <input type="text" path="email" name="email" ng-model="email"   id="email" maxlength="70"   class="form-control"  required="true" >
+                                                        <input type="text" path="email" name="email" ng-value="email" ng-model="email"   id="email" maxlength="70"   class="form-control"  required="true"  readonly="true">
                                                     </div>
                                                 </div>
                                             </div>
@@ -308,19 +302,10 @@
                                                 <div class="form-group row">
                                                     <label class="control-label text-right col-md-3 required">Institute </label>
                                                     <div class="col-md-9">
-                                                        <input type="text" path="institute" name="institute"  ng-model="institute"  id="institute" maxlength="50" class="form-control" required="true" >
+                                                        <input type="text" path="institute" name="institute" ng-value="institute" ng-model="institute"  id="institute" maxlength="50" class="form-control" required="true" >
                                                     </div>
                                                 </div>
                                             </div>
-<!--                                             <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label class="control-label text-right col-md-3 required">Role</label>
-                                                    <div class="col-md-9">
-                                                        <input type="text" path="role" name="role" id="role"  maxlength="11" class="form-control" readonly="true" required="true" >
-                                                    </div>
-                                                </div>
-                                            </div> -->
-                                            <!--/span-->
                                         </div>
                                         <!--/row-->
 
@@ -335,7 +320,7 @@
                                                 <div class="row">
 
                                                     <div class="col-md-offset-3 col-lg-12">
-                                                        <button ng-click="postData()" type="submit" class="btn btn-success">Submit</button>
+                                                        <button ng-disabled="myForm.$invalid" id="submit" type="submit" class="btn btn-success">Submit</button>
                                                         <button onclick="location.href='teacherdash.html'" type="button" class="btn btn-inverse">Cancel</button>
                                                         <br>
                                                     </div>
