@@ -73,7 +73,7 @@ public class UserDetailsDao{
 	    	    	String sql="INSERT INTO userdetails (FName, MName, LName, Phnumber, EmailID, Password, InstName,UserID,Role) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	    	    	
 	    	    	jdbcTemplate = new JdbcTemplate(dataSource);
-	    	    	System.out.println(user);
+	    	    	//System.out.println(user);
 	    	    	Connection con = null;
 	    	    	PreparedStatement st = null;
 	    	    	try {
