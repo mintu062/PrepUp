@@ -19,7 +19,7 @@ app.controller('LoginController', function ($scope, $http) {
 					const rolee =	resp.data.userDetails.role;
 					
 					sessionStorage.setItem("userDetails", JSON.stringify(resp.data.userDetails));					
-					if (rolee == "teacher") 
+					if (rolee == "Teacher") 
 						{						
 	                    location.replace("teacherdash.html");						
 	                } else 
@@ -55,18 +55,19 @@ app.controller('RegistrationController', function ($scope, $http ) {
 				if(status_code_r==200)				
 				{	
 					alert("success");
-					location.replace(registration.html);
+					window.location.reload();
+					$scope.message1= resp.data.message;
 				}
 				else
 				{
 					alert(resp.data.message+", User with given credentials already exists");
-					location.replace(registration.html);
+					window.location.reload();
 					$scope.message= resp.data.message;					
 				}
 				
      
             }, function error(resp) {
-		/*alert(message);*/
+		alert("Server Not Connected");
       /*$scope.error = 'Invalid credentials!!!';*/
     });
     };
@@ -159,17 +160,48 @@ string=sessionStorage.getItem("userDetails");
 
 });
 
-app.controller('TeacherDash', function ($scope) {
-	
-	/*$scope.kkk = "dxdfgdfg";
-	alert($scope.kkk);
-					alert("hello");
-					temp=JSON.parse(sessionStorage.getItem("userDetails"));
-					alert(temp.fname);*/
+app.controller('CreateClass', function ($scope, $http) {
+	string=sessionStorage.getItem("userDetails");
+		var obj =JSON.parse(string);
+		$scope.userid=obj.userid;
+		
+
+		$scope.postData = function() {	
+					const body2={			
+	"className":$scope.className,"classDesc":$scope.classDesc,
+	"teacherId":$scope.userid
+} 
+		 $http.post(baseurl+"/createclass",body2)
+            .then(function(resp) {
+                /*$scope.token = resp.data.token;*/
+				const status_code = resp.data.status_code;
+				if(status_code==200)				
+				{	
+					alert("Class Creation Success");
+					window.location.reload();
+					
+				}
+				else
+				{						
+					$scope.message= resp.data.message;
+					alert("Class Creation Failed")
+				}
+               
+            }, function error(resp) {
+    
+    });
+    };
+
 	
 		
 });
 
+app.controller('TeacherDash', function ($scope) {
+
+		
+
+		
+});
 app.controller('ViewUser', function ($scope) {
 	
 		string=sessionStorage.getItem("userDetails");
