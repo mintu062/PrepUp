@@ -9,13 +9,26 @@ public class UserDetailsVO {
 	private String emailid;
 	private String password;
 	private String instname;
-	private Integer userid;
+	private String userid;
 	private String role;
 	public UserDetailsVO() {
 		super();
 	}
+	
+	public UserDetailsVO(String fname, String mname, String lname, String phnumber, String emailid,
+			String instname, String userid, String role) {
+		super();
+		this.fname = fname;
+		this.mname = mname;
+		this.lname = lname;
+		this.phnumber = phnumber;
+		this.emailid = emailid;
+		this.instname = instname;
+		this.userid = userid;
+		this.role = role;
+	}
 	public UserDetailsVO(String fname, String mname, String lname, String phnumber, String emailid, String password,
-			String instname, Integer userid, String role) {
+			String instname, String userid, String role) {
 		super();
 		this.fname = fname;
 		this.mname = mname;
@@ -23,19 +36,6 @@ public class UserDetailsVO {
 		this.phnumber = phnumber;
 		this.emailid = emailid;
 		this.password = password;
-		this.instname = instname;
-		this.userid = userid;
-		this.role = role;
-	}
-	
-	public UserDetailsVO(String fname, String mname, String lname, String phnumber, String emailid, String instname,
-			Integer userid, String role) {
-		super();
-		this.fname = fname;
-		this.mname = mname;
-		this.lname = lname;
-		this.phnumber = phnumber;
-		this.emailid = emailid;
 		this.instname = instname;
 		this.userid = userid;
 		this.role = role;
@@ -82,10 +82,10 @@ public class UserDetailsVO {
 	public void setInstname(String instname) {
 		this.instname = instname;
 	}
-	public Integer getUserid() {
+	public String getUserid() {
 		return userid;
 	}
-	public void setUserid(Integer userid) {
+	public void setUserid(String userid) {
 		this.userid = userid;
 	}
 	public String getRole() {
@@ -94,12 +94,9 @@ public class UserDetailsVO {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	@Override
-	public String toString() {
-		return "UserDetailsVO [fname=" + fname + ", mname=" + mname + ", lname=" + lname + ", phnumber=" + phnumber
-				+ ", emailid=" + emailid + ", password=" + password + ", instname=" + instname + ", userid=" + userid
-				+ ", role=" + role + "]";
-	}
+	
+	
+	
 	
 	
 }
