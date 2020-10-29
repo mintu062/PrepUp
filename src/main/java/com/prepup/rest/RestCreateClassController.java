@@ -7,9 +7,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.prepup.model.ChangePassDetails;
 import com.prepup.model.CreateClassDetails;
+import com.prepup.rest.model.Status;
 import com.prepup.rest.model.ChangePassStatus;
 import com.prepup.rest.model.Status;
 import com.prepup.service.ClassDetailsService;
+
 
 @RestController
 public class RestCreateClassController {
