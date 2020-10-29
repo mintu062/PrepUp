@@ -48,7 +48,7 @@ public class UserDetailsDao{
 	                				rs.getString("phnumber"),
 	                				rs.getString("emailid"),
 	                				rs.getString("instname"),
-	                				rs.getInt("userid"),
+	                				rs.getString("userid"),
 	                				rs.getString("role")
 	                				)
 	                		);
@@ -70,7 +70,7 @@ public class UserDetailsDao{
 //	    	    	String sql="INSERT INTO `userdetails` (FName, MName,LName, Phnumber,EmailID, Password, InstName, Role)"
 //	    	    			+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 	    	    	
-	    	    	String sql="INSERT INTO userdetails (FName, MName, LName, Phnumber, EmailID, Password, InstName,  Role) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+	    	    	String sql="INSERT INTO userdetails (FName, MName, LName, Phnumber, EmailID, Password, InstName,UserID,Role) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	    	    	
 	    	    	jdbcTemplate = new JdbcTemplate(dataSource);
 	    	    	System.out.println(user);
@@ -86,7 +86,8 @@ public class UserDetailsDao{
 	    				st.setString(5,user.getEmailid());
 	    				st.setString(6,user.getPassword());
 	    				st.setString(7,user.getInstname());
-	    				st.setString(8,user.getRole());
+	    				st.setString(8,user.getUserid());
+	    				st.setString(9,user.getRole());
 	    				return st.executeUpdate();
 	    			} catch (SQLException e) {
 	    				// TODO: handle exception

@@ -1,5 +1,7 @@
 package com.prepup.service;
 
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,26 @@ public class UserDetailsService {
 		UserDetailsVO userDetailsVO= new UserDetailsVO();
 		userDetailsVO.setEmailid(user.getEmail());
 		userDetailsVO.setPassword(user.getPassword());
+		//--------------------------------------------------------------
+		//random code generation using UUID
+//		String uuid = UUID.randomUUID().toString();
+//		System.out.println("uuid = " + uuid);
+//		System.out.println("uuid = " + uuid.substring(28,36));
+		//-----------------------------------------------------------------
+		
+	//random integer id generator---------------------------------------------
+//		char ch;
+//		String role="Student";
+//		if(role=="Teacher")
+//			ch='T';
+//		else
+//			ch='S';
+//		
+//		Integer uniqueIdint = (int) (System.currentTimeMillis() & 0xfffffff);
+//		String uniqueId=ch+Integer.toString(uniqueIdint).substring(4,9);
+//		System.out.println(uniqueId);
+	//-----------------------------------------------------------------------------------------------	
+		
 		
 		Boolean isSuccess=Boolean.FALSE;
 		 if(userdetailsdao.isValidUser(userDetailsVO)>0) {
@@ -48,9 +70,17 @@ public Boolean createUser(UserDetails userdetails) {
 		userDetailsVO.setEmailid(userdetails.getEmail());
 		userDetailsVO.setPassword(userdetails.getPassword());
 		userDetailsVO.setInstname(userdetails.getInstitute());
-		//userDetailsVO.setUserid(2);
+		
 		userDetailsVO.setRole(userdetails.getRole());
 		
+		char ch;
+		if(userdetails.getRole().equals("Teacher"))
+			ch='T';
+		else
+			ch='S';
+		Integer uniqueIdint = (int) (System.currentTimeMillis() & 0xfffffff);
+		String uniqueId=ch+Integer.toString(uniqueIdint).substring(4,9);
+		userDetailsVO.setUserid(uniqueId);
 
 		
 		Boolean isSuccess=Boolean.FALSE;
