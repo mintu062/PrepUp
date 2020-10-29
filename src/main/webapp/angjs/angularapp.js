@@ -105,7 +105,8 @@ string=sessionStorage.getItem("userDetails");
 					if (rolee == "teacher") 
 						{			
 						alert("Update Success");			
-	                    location.replace("teacherdash.html");						
+	                    location.replace("teacherdash.html");
+	                    sessionStorage.setItem("userDetails", JSON.stringify(resp.data.userDetails));
 	                } else 
 						{		
 							alert("Update Success");					

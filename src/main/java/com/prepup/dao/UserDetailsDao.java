@@ -54,6 +54,23 @@ public class UserDetailsDao{
 	                		);
 	    }
 	    
+	    public UserDetailsVO findUserByEmail(String email) {
+	    	String sql="select * from userdetails where emailid=?";
+	        return jdbcTemplate
+	                .queryForObject(sql,new Object[] {email},
+	                		(rs,rowNum)->new UserDetailsVO(
+	                				rs.getString("fname"),
+	                				rs.getString("mname"),
+	                				rs.getString("lname"),
+	                				rs.getString("phnumber"),
+	                				rs.getString("emailid"),
+	                				rs.getString("instname"),
+	                				rs.getString("userid"),
+	                				rs.getString("role")
+	                				)
+	                		);
+	    }
+	    
 //	    public int createUser(UserDetailsVO user) {
 ////	    	    	String sql="INSERT INTO userdetails VALUES ('?', '?', '?', '?', '?', '?', '?', ?, '?')";ggggg
 //	    	    	String sql="INSERT INTO `userdetails` (FName, MName,LName, Phnumber,EmailID, Password, InstName, Role)"
