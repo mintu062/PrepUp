@@ -32,14 +32,14 @@
 <script src="angjs/angularapp.js"></script>
 	
 </head>
-<body ng-app='prepup' ng-controller='LoginController'>
+<body ng-app='prepup'  ng-controller='LoginController' >
 	
 	<div class="limiter">
 		<div class="container-login100">
 		
 			<div class="wrap-login100">
 			
-				<form  class="login100-form validate-form">
+				<form name="myForm" ng-submit="postData()" class="login100-form validate-form">
 				<div ><a class="ind" href="index.html">Back to home</a></div>
 				<br>
 					<span class="login100-form-title p-b-26">
@@ -48,7 +48,7 @@
 
                     
 					<div class="wrap-input100 validate-input" data-validate = "Enter Valid email ID">
-						<input path="email" class="input100" ng-model='email' type="email" name="email" >
+						<input path="email" class="input100" id="email" ng-model='email' type="email" name="email">
 						<span class="focus-input100" data-placeholder="Email"></span>
 					</div>
 
@@ -56,14 +56,14 @@
 						<span class="btn-show-pass">
 							<i class="zmdi zmdi-eye"></i>
 						</span>
-						<input path="password" class="input100" ng-model='password' type="password" name="pass" />
+						<input path="password" class="input100" id="password" ng-model='password' type="password" name="password">
 						<span class="focus-input100" data-placeholder="Password"></span>
 					</div>
  					<span align="center" ><h3 style="color: red">{{message}}</h3></span>
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<button ng-click="postData()" [disabled]="!form.valid" class="login100-form-btn">
+							<button  id="btnSubmit" type="submit" class="login100-form-btn" value="Submit">
 								Login
 							</button>
 						</div>
@@ -82,7 +82,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 
 <!--	<div id="dropDownSelect1"></div>-->
 	
@@ -102,6 +102,7 @@
 	<script src="vendor/vendorlogin/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
 	<script src="js/jslogin/main.js"></script>
-
+	
+	
 </body>
 </html>

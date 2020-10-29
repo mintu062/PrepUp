@@ -3,7 +3,7 @@ var app = angular.module('prepup', []);
 const baseurl="http://localhost:8082/rest";
 var temp;
 
-app.controller('LoginController', function ($scope, $http,userService) {
+app.controller('LoginController', function ($scope, $http) {
 
     $scope.postData = function() {
 		const body={
@@ -17,6 +17,7 @@ app.controller('LoginController', function ($scope, $http,userService) {
 				if(status_code==200)				
 				{	
 					const rolee =	resp.data.userDetails.role;
+					
 					sessionStorage.setItem("userDetails", JSON.stringify(resp.data.userDetails));					
 					if (rolee == "teacher") 
 						{						
@@ -73,60 +74,125 @@ app.controller('RegistrationController', function ($scope, $http ) {
 
 
 app.controller('UpdateController', function ($scope, $http ) {
-
+string=sessionStorage.getItem("userDetails");
+		var obj =JSON.parse(string);
+		$scope.fname = obj.fname;
+		$scope.mname = obj.mname;
+		$scope.lname = obj.lname;
+		$scope.phone =  parseInt(obj.phnumber);
+		$scope.institute = obj.instname;
+		$scope.email=obj.emailid;
+		
   $scope.postData = function() {		
 		const body2={
 			"fname":$scope.fname,"mname":$scope.mname,"lname":$scope.lname,"phone":$scope.phone,
 	"email":$scope.email,
 	"institute":$scope.institute
 } 
-alert(JSON.stringify(body2));
+
+
+
        $http.post(baseurl+"/profileupdate",body2)
             .then(function(resp) {
                 /*$scope.token = resp.data.token;*/
                const status_code = resp.data.status_code;
 				if(status_code==200)				
 				{	
-					alert("success");
-/*					const rolee =	resp.data.userDetails.role;
+				
+				const rolee =	obj.role;
 									
 					if (rolee == "teacher") 
-						{						
+						{			
+						alert("Update Success");			
 	                    location.replace("teacherdash.html");						
 	                } else 
-						{						
+						{		
+							alert("Update Success");					
 	                    location.replace("studentdash.html");						
-	                }		*/		}
+	                }			}
 				else
 				{						
 					$scope.message= resp.data.message;
-										alert("failed");
+										alert("Updation failed");
 				}
             }, function error(resp) {
     
     });
+	console.log(JSON.stringify(body2));
     };
+});
+
+
+app.controller('ChangepassController', function ($scope, $http ) {
+
+string=sessionStorage.getItem("userDetails");
+		var obj =JSON.parse(string);
+		$scope.user = obj.fname;
+		$scope.emailid=obj.emailid;
+		
+  $scope.postData = function() {		
+		const body2={			
+	"emaiId":$scope.emailid,"oldPass":$scope.oldPass,
+	"newPass":$scope.newPass
+} 
+		console.log(JSON.stringify(body2));
+       $http.post(baseurl+"/changepass",body2)
+            .then(function(resp) {
+                /*$scope.token = resp.data.token;*/
+               const status_code = resp.data.status_code;
+				if(status_code==200)				
+				{	
+					alert("success");
+					sessionStorage.clear();
+					location.replace("login.html")
+					
+				}
+				else
+				{						
+					$scope.message= resp.data.message;
+				}
+            }, function error(resp) {
+    
+    });
+
+    };
+
 });
 
 app.controller('TeacherDash', function ($scope) {
 	
-	$scope.kkk = "dxdfgdfg";
+	/*$scope.kkk = "dxdfgdfg";
 	alert($scope.kkk);
 					alert("hello");
 					temp=JSON.parse(sessionStorage.getItem("userDetails"));
-					alert(temp.fname);
+					alert(temp.fname);*/
+	
+		
 });
 
-app.service("userService",function($rootScope){
-	this.email="";
+app.controller('ViewUser', function ($scope) {
 	
-	this.setData = function(d){
-		this.email=d;
+		string=sessionStorage.getItem("userDetails");
+		var obj =JSON.parse(string);
+		$scope.user = obj.fname;
+		$scope.emailid=obj.emailid;
 		
-		$rootScope.$emit("userevent");
-	}
-	this.getData = function(){
-		return this.email;
-	}
 });
+
+app.controller('logout', function ($scope) {
+	
+		
+
+		  $scope.postData = function() {	
+					
+				sessionStorage.clear();
+				string=sessionStorage.getItem("userDetails");
+				console.log(string);
+				location.replace("login.html")
+
+    };
+});
+
+
+
 		
