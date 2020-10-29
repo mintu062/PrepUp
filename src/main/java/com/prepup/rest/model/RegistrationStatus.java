@@ -6,15 +6,17 @@ public class RegistrationStatus {
 
 	private Integer status_code;
 	private String  message;
+	private UserDetailsVO userDetails;
 	
 	public RegistrationStatus() {
 		super();
 	}
 
-	public RegistrationStatus(Integer status_code, String message) {
+	public RegistrationStatus(Integer status_code, String message, UserDetailsVO userDetails) {
 		super();
 		this.status_code = status_code;
 		this.message = message;
+		this.userDetails = userDetails;
 	}
 
 	public Integer getStatus_code() {
@@ -32,5 +34,15 @@ public class RegistrationStatus {
 	public void setMessage(String message) {
 		this.message = message;
 	}
+
+	public UserDetailsVO getUserDetails() {
+		return userDetails;
+	}
+
+	public void setUserDetails(UserDetailsVO userDetails) {
+		this.userDetails = userDetails;
+	}
+
+	
 	
 }
