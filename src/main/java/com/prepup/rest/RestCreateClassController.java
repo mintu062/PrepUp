@@ -7,8 +7,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.prepup.model.ChangePassDetails;
 import com.prepup.model.CreateClassDetails;
+import com.prepup.rest.model.Status;
 import com.prepup.rest.model.ChangePassStatus;
 import com.prepup.service.ClassDetailsService;
+
 
 @RestController
 public class RestCreateClassController {
@@ -17,21 +19,21 @@ public class RestCreateClassController {
 	ClassDetailsService classDetailsService;
 	
 	@PostMapping("rest/createclass")
-	public Boolean createClass(@RequestBody CreateClassDetails createClassDetails) {
-//		ChangePassStatus changePassStatus = new ChangePassStatus();
+	public Status createClass(@RequestBody CreateClassDetails createClassDetails) {
+		Status s = new Status();
 		Boolean status=classDetailsService.createClass(createClassDetails);
-//		if(status==true) {
-//			changePassStatus.setStatus_code(200);
-//			changePassStatus.setMessage("Password Changed Successfully");
-//		}
-//		else {
-//			changePassStatus.setStatus_code(400);
-//			changePassStatus.setMessage("Old password is wrong");
-//		}
+		if(status==true) {
+		s.setStatus_code(200);
+		s.setMessage("Your class is created");
+		}
+		else {
+			s.setStatus_code(400);
+			s.setMessage("Class creation failed");
+		}
 		
 		
 		
-		return status;
+		return s;
 	} 
 
 }
