@@ -37,7 +37,7 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form" role="from">
+				<form ng-submit="postData()"  class="login100-form validate-form" id="form_id" role="from">
 								<div ><a class="ind" href="index.html">Back to home</a></div><br>
 					<span class="login100-form-title p-b-26">
 						Welcome, Registration Page
@@ -95,7 +95,7 @@
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<button ng-click="postData()"  class="login100-form-btn">
+							<button type="submit" id="btnSubmit" class="login100-form-btn">
 								Register
 							</button>
 						</div>
@@ -133,6 +133,21 @@
 	<script src="vendor/vendorlogin/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
 	<script src="js/jslogin/main.js"></script>
+	<script type="text/javascript">
+	jQuery(document).ready(function($) {
 
+		$('#form_id #btnSubmit').prop('disabled', true);
+
+		$('#form_id input').keyup(function() {
+		var disable = false;
+
+		$('#form_id input').each(function() {
+		if($(this).val() == '') { disable = true };
+		});
+
+		$('#form_id #btnSubmit').prop('disabled', disable);
+		});
+	});
+</script>
 </body>
 </html>
