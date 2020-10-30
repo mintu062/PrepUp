@@ -1,5 +1,6 @@
 package com.prepup.service;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.prepup.dao.ClassDetailsDao;
 import com.prepup.model.CreateClassDetails;
+import com.prepup.model.TeacherId;
 import com.prepup.vo.ClassDetailsVO;
 
 
@@ -43,5 +45,11 @@ public Boolean createClass(CreateClassDetails classDetails) {
 	        }
 		 return isSuccess;
 	}
+
+
+public List<ClassDetailsVO> findClassByTid(TeacherId tid) {
+	
+	return classDetailsDao.findClassByTid(tid);
+}
 
 }

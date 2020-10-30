@@ -1,8 +1,10 @@
 package com.prepup.dao;
 
+import java.util.List;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 
 import javax.sql.DataSource;
 
@@ -10,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.prepup.model.TeacherId;
 import com.prepup.vo.ClassDetailsVO;
 
 @Repository
@@ -56,4 +59,14 @@ public class ClassDetailsDao {
 	    	
 		 
 	 }
+	 
+
+
+	public List<ClassDetailsVO> findClassByTid(TeacherId tid) {
+		 jdbcTemplate = new JdbcTemplate(dataSource);
+	        String sql = "SELECT * FROM classdetails where teacherid=?";
+	        return jdbcTemplate.query(sql, new Object[]{tid.getTeacherId()}, BeanPropertyRowMapper.newInstance(ClassDetailsVO.class));
+//	        jdbcTemplate.queryForList(
+//	                sql, new Object[]{teacherId}, BeanPropertyRowMapper.newInstance(ClassDetailsVO.class));
+	}
 }
