@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.prepup.dao.ClassDetailsDao;
+import com.prepup.model.ClassId;
 import com.prepup.model.CreateClassDetails;
 import com.prepup.model.TeacherId;
 import com.prepup.vo.ClassDetailsVO;
@@ -50,6 +51,11 @@ public Boolean createClass(CreateClassDetails classDetails) {
 public List<ClassDetailsVO> findClassByTid(TeacherId tid) {
 	
 	return classDetailsDao.findClassByTid(tid);
+}
+
+public ClassDetailsVO findClassByCid(ClassId cid) {
+	
+	return classDetailsDao.findClassByCid(cid);
 }
 
 }
