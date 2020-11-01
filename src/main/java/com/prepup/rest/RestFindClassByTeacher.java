@@ -25,7 +25,7 @@ public class RestFindClassByTeacher {
 	public List<ClassDetailsVO> findClassByTid(@RequestBody TeacherId tid) {
 		
 		return classDetailsService.findClassByTid(tid);
-	} 
+	}
 
 
 }

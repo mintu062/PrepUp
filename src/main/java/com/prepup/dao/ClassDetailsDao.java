@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.prepup.model.ClassId;
 import com.prepup.model.TeacherId;
 import com.prepup.vo.ClassDetailsVO;
 
@@ -66,6 +67,14 @@ public class ClassDetailsDao {
 		 jdbcTemplate = new JdbcTemplate(dataSource);
 	        String sql = "SELECT * FROM classdetails where teacherid=?";
 	        return jdbcTemplate.query(sql, new Object[]{tid.getTeacherId()}, BeanPropertyRowMapper.newInstance(ClassDetailsVO.class));
+//	        jdbcTemplate.queryForList(
+//	                sql, new Object[]{teacherId}, BeanPropertyRowMapper.newInstance(ClassDetailsVO.class));
+	}
+	
+	public ClassDetailsVO findClassByCid(ClassId cid) {
+		 jdbcTemplate = new JdbcTemplate(dataSource);
+	        String sql = "SELECT * FROM classdetails where classid=?";
+	        return jdbcTemplate.queryForObject(sql, new Object[]{cid.getClassId()}, BeanPropertyRowMapper.newInstance(ClassDetailsVO.class));
 //	        jdbcTemplate.queryForList(
 //	                sql, new Object[]{teacherId}, BeanPropertyRowMapper.newInstance(ClassDetailsVO.class));
 	}
