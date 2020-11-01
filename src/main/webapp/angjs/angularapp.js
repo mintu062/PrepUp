@@ -197,12 +197,33 @@ app.controller('CreateClass', function ($scope, $http) {
 		
 });
 
-app.controller('TeacherDash', function ($scope) {
 
-		
+app.controller('TeacherClasses', function ($scope, $http) {
+	string=sessionStorage.getItem("userDetails");
+		var obj =JSON.parse(string);
+		$scope.userid=obj.userid;		
 
-		
+			
+					const body2={			
+				"teacherId":$scope.userid
+				} 
+				console.log(JSON.stringify(body2));
+				
+		 $http.post(baseurl+"/findclassbyteacherid",body2)
+            .then(function(resp) {
+				$scope.obj=resp.data;
+				console.log($scope.obj);
+
+            }, function error(resp) {    
+    });
+
+	
 });
+
+
+
+
+
 app.controller('ViewUser', function ($scope) {
 	
 		string=sessionStorage.getItem("userDetails");
@@ -221,7 +242,7 @@ app.controller('logout', function ($scope) {
 				sessionStorage.clear();
 				string=sessionStorage.getItem("userDetails");
 				console.log(string);
-				location.replace("login.html")
+				location.replace("login.html");
 
     };
 });
