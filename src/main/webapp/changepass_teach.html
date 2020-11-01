@@ -147,10 +147,10 @@
 
                         <li> <a class=" waves-effect waves-dark" href="teacherdash.html" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Home </span></a>
                         </li>
-                        <li> <a class=" waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account-plus"></i><span class="hide-menu">Create Class </span></a>
+                         <li> <a class=" waves-effect waves-dark" href="#" data-toggle="modal" data-target="#exampleModal" aria-expanded="false"><i class="mdi mdi-account-plus"></i><span class="hide-menu">Create Class </span></a>
                         </li>
 
-                        <li> <a class=" waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account-search"></i><span class="hide-menu">My Classes</span></a>
+                        <li> <a class=" waves-effect waves-dark" href="teacherclasses.html" aria-expanded="false"><i class="mdi mdi-account-search"></i><span class="hide-menu">My Classes</span></a>
                         </li>
                         
                         <li> <a class=" waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-book-open"></i><span class="hide-menu">Results</span></a>
@@ -218,7 +218,39 @@
                                     </div>
                                     <!-- /.modal-dialog -->
                                 </div>
-                               
+                                                               <div class="modal fade" ng-controller='CreateClass' id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title" id="exampleModalLabel1">Create Class</h4>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form ng-submit="postData()" name="myForm">
+                                                    <div class="form-group">
+                                                        <label for="recipient-name" class="control-label">Class Name:</label>
+                                                        <input type="text" ng-model="className" class="form-control" id="recipient-name1">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="recipient-name" class="control-label">Class Desc:</label>
+                                                        <input type="text" ng-model="classDesc" class="form-control" id="recipient-name1">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        
+                                                        <input type="hidden" ng-value="userid" ng-model="userid" class="form-control" id="recipient-name1">
+                                                   <center> </div >
+                                                   <div>
+                                                   
+                                                <button type="submit" id="submit" ng-disabled="myForm.$invalid" class="btn btn-primary">Create Class</button>
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                </div> 
+                                                  </center>
+                                                </form>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
 
 
                                 <div class="row">
