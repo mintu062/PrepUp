@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.prepup.dao.ClassDetailsDao;
 import com.prepup.model.CreateClassDetails;
 import com.prepup.model.CreateExamDetails;
+import com.prepup.model.ExamId;
 import com.prepup.rest.model.Status;
 
 import com.prepup.service.ClassDetailsService;
@@ -26,23 +27,14 @@ public class RestCreateExamController {
 	
 	
 	@PostMapping("rest/createexam")
-	public Status createClass(@RequestBody CreateExamDetails createExamDetails) {
-		Boolean status=examDetailsService.createExam(createExamDetails);
-		Status s = new Status();
-		if(status==true) {
-		s.setStatus_code(200);
-		s.setMessage("Your exam is created");
-		}
-		else {
-			s.setStatus_code(400);
-			s.setMessage("Class creation failed");
-		}
+	public ExamId createExam(@RequestBody CreateExamDetails createExamDetails) {
+		ExamId eid=examDetailsService.createExam(createExamDetails);
 //		CreateExamDetails cde =new CreateExamDetails();
 //		cde.seteName("Python Mock test -1");
 //		cde.setClassId("C8657");
 //		cde.setDate(Date.valueOf("2020-10-31"));
 //		
 		
-		return s;
+		return eid;
 	} 
 }
