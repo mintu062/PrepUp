@@ -431,5 +431,12 @@
     <!-- Style switcher -->
     <!-- ============================================================== -->
     <script src="assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+     <script>
+	if(sessionStorage.getItem("userDetails")==null) {
+	$(document).ready(function() {
+		location.replace("login.html");
+		});
+	}
+</script>
 </body>
 </html>

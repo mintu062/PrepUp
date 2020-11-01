@@ -218,6 +218,64 @@ app.controller('TeacherClasses', function ($scope, $http) {
 		/*console.log($scope.classid);*/
     	sessionStorage.setItem("classID",$scope.classid);
 		/*console.log(sessionStorage.getItem("classID"));*/
+		location.replace("teacherclassdetails.html")
+  };
+});
+
+
+app.controller('CreateExam', function ($scope, $http) {
+	string=sessionStorage.getItem("userDetails");
+		var obj =JSON.parse(string);
+		$scope.username=obj.fname +" "+ obj.lname;	
+		
+			string=sessionStorage.getItem("classID");
+		$scope.classId =string;
+				
+
+		$scope.postData = function() {	
+					const body2={			
+	"examname":$scope.examname,"examdsc":$scope.examdsc,
+	"examdate":$scope.examdate,"examduration" : $scope.examduration,"classId":$scope.classId
+}
+ console.log("hello");
+console.log(JSON.stringify(body2));
+		 
+    };
+
+	
+		
+});
+
+app.controller('TeacherClassesDetails', function ($scope, $http) {
+	string=sessionStorage.getItem("userDetails");
+		var obj =JSON.parse(string);
+		$scope.username=obj.fname +" "+ obj.lname;	
+		
+			$scope.classId=sessionStorage.getItem("classID");
+		console.log($scope.classId);
+		
+				
+			const body2={  "classId":$scope.classId } 
+				/*console.log(JSON.stringify(body2));	
+				console.log("hello");	*/	
+		 $http.post(baseurl+"/findclassbyclassid",body2)
+            .then(function(resp) {
+				$scope.obj1=resp.data;
+				sessionStorage.setItem("classdetails", $scope.obj1)		
+				/*console.log($scope.obj);*/
+				
+				
+
+
+            }, function error(resp) {    
+    });	
+		$scope.postData = function(classs) {
+
+    	$scope.classid=classs.classId;
+		/*console.log($scope.classid);*/
+    	sessionStorage.setItem("classID",$scope.classid);
+		/*console.log(sessionStorage.getItem("classID"));*/
+		location.replace("teacherclassdetails.html")
   };
 });
 
