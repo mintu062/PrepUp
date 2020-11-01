@@ -399,7 +399,13 @@
         $("input,select,textarea").not("[type=submit]").jqBootstrapValidation();
     }(window, document, jQuery);
     </script>
-
+ <script>
+	if(sessionStorage.getItem("userDetails")==null) {
+	$(document).ready(function() {
+		location.replace("login.html");
+		});
+	}
+</script>
     <!-- ============================================================== -->
     <!-- Style switcher -->
     <!-- ============================================================== -->

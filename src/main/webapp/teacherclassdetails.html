@@ -170,11 +170,13 @@
             <!-- ============================================================== -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-themecolor">DashBoard</h3>
+                    <h3 class="text-themecolor">Class Details</h3>
                 </div>
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="teacherdash.html">Home</a></li>
+                        <li class="breadcrumb-item">My Classes</li>
+                        <li class="breadcrumb-item">Class Details</li>
                     </ol>
                 </div>
 
@@ -253,16 +255,21 @@
                                 </div>
                                 
                                 
-                              <div class="card">
+                              <div ng-controller="TeacherClassesDetails" class="card">
                               <div class="card-header">
-                                <h2> Hello</h2>
+                                <h3>Subject:      &nbsp; {{obj1.className}}</h3>
+                                <h4>Teacher:    &nbsp; &nbsp; {{username}}</h4>
                               </div>
                               <div class="card-body">
-                                <h4 class="card-title">Special title treatment</h4>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                <h4 class="card-title">{{obj1.classDesc}}</h4>
+                                <h5 class="card-title"></h5>
+                                <h5  class="card-text"><b>Pass key : {{obj1.classPasskey}}</b></h5>
+                                <p class="card-text">Class ID :{{obj1.classId}}</p>
+                                
                               </div>
                             </div>
+                            <div align="center"><a align="right" href="createexam.html" class="btn btn-primary">Create Exam</a></div>
+                            
                             </div>
                         </div>
                     </div>
@@ -325,5 +332,12 @@
     <!-- Style switcher -->
     <!-- ============================================================== -->
     <script src="assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+    	 <script>
+	if(sessionStorage.getItem("userDetails")==null) {
+	$(document).ready(function() {
+		location.replace("login.html");
+		});
+	}
+</script>
 </body>
 </html>
