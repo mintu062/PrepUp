@@ -202,22 +202,23 @@ app.controller('TeacherClasses', function ($scope, $http) {
 	string=sessionStorage.getItem("userDetails");
 		var obj =JSON.parse(string);
 		$scope.userid=obj.userid;		
-
-			
-					const body2={			
-				"teacherId":$scope.userid
-				} 
-				console.log(JSON.stringify(body2));
-				
+			const body2={  "teacherId":$scope.userid } 
+			/*	console.log(JSON.stringify(body2));	*/			
 		 $http.post(baseurl+"/findclassbyteacherid",body2)
             .then(function(resp) {
 				$scope.obj=resp.data;
-				console.log($scope.obj);
+				/*console.log($scope.obj);*/
+
 
             }, function error(resp) {    
-    });
+    });	
+		$scope.postData = function(classs) {
 
-	
+    	$scope.classid=classs.classId;
+		/*console.log($scope.classid);*/
+    	sessionStorage.setItem("classID",$scope.classid);
+		/*console.log(sessionStorage.getItem("classID"));*/
+  };
 });
 
 
