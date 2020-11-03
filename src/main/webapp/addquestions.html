@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
-<head>
+<html lang="en">
 
-  <meta charset="utf-8">
+
+<head>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,7 +11,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
-    <title>Prep-UP|| Update Profile</title>
+    <title>Prep-UP|| Teacher </title>
     <!-- Bootstrap Core CSS -->
     <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -24,13 +25,11 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-
 		<script src="angjs/angular.min.js"></script>
 		<script src="angjs/angularapp.js"></script>
 </head>
 
-<body  ng-app='prepup' class="fix-header card-no-border">
-
+<body ng-app='prepup' class="fix-header card-no-border">
 
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
@@ -49,7 +48,7 @@
                 <!-- Logo -->
                 <!-- ============================================================== -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="Dashboard.html">
+                    <a class="navbar-brand" href="">
                         <!-- Logo icon --><b>
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
@@ -85,7 +84,7 @@
                         <!-- ============================================================== -->
                         <!-- Profile -->
                         <!-- ============================================================== -->
-                        <li class="nav-item dropdown">
+                        <!-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/users/1.jpg" alt="user" class="profile-pic" /></a>
                             <div class="dropdown-menu dropdown-menu-right scale-up">
                                 <ul class="dropdown-user">
@@ -94,27 +93,21 @@
                                             <div class="u-img"><img src="assets/images/users/1.jpg" alt="user"></div>
                                             <div ng-controller='ViewUser' class="u-text">
                                                 <h3>{{user}}</h3>
-                                                <p>Student </p>
-<!--                                                 <p class="text-muted">Prep-Up</p> -->
+                                                <p>Teacher </p>
+                                                <p class="text-muted">Prep-Up</p>
                                         </div></center>
                                         </div>
                                     </li>
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="update_stud.html"><i class="ti-pencil-alt"></i>  Update Profile</a></li>
+                                    <li><a href="update_teach.html"><i class="ti-pencil-alt"></i>  Update Profile</a></li>
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="changepass_stud.html"><i class="ti-settings"></i>  Change password</a></li>
+                                    <li><a href="changepass_teach.html"><i class="ti-settings"></i>  Change password</a></li>
                                     <li role="separator" class="divider"></li>
                                     
                                     <li><a href="#" alt="default" data-toggle="modal" data-target="#verticalcenter" ><i class="fa fa-power-off"></i> Logout</a></li>
                                 </ul>
                             </div>
-
-
-
-
-
-
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </nav>
@@ -138,30 +131,12 @@
                     <!-- User profile text-->
                     <div ng-controller='ViewUser' class="profile-text">
                     <h3>{{user}}</h3>
-                        <h5>Student</h5>
+                        <h5>Teacher</h5>
            
                     </div>
                 </div>
                 <!-- End User profile text-->
-                <!-- Sidebar navigation-->
-                <nav class="sidebar-nav">
-                    <ul id="sidebarnav">
-                        <li class="nav-devider"></li>
 
-                        <li> <a class=" waves-effect waves-dark" href="studentdash.html" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Home </span></a>
-                        </li>
-                        <li> <a class=" waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account-plus"></i><span class="hide-menu">Join Class </span></a>
-                        </li>
-
-                        <li> <a class=" waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account-search"></i><span class="hide-menu">My Classes</span></a>
-                        </li>
-                        
-                        <li> <a class=" waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-book-open"></i><span class="hide-menu">Results</span></a>
-                        </li>
-
-                    </ul>
-                </nav>
-                <!-- End Sidebar navigation -->
             </div>
             <!-- End Sidebar scroll-->
         </aside>
@@ -177,12 +152,15 @@
             <!-- ============================================================== -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-themecolor">Update Profile</h3>
+                    <h3 class="text-themecolor">ADD QUESTIONS</h3>
                 </div>
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="studentdash.html">Home</a></li>
-                        <li class="breadcrumb-item">Update Profile</li>
+                        <li class="breadcrumb-item"><b>Home</b></li>
+                        <li class="breadcrumb-item">My Classes</li>
+                        <li class="breadcrumb-item">Class Details</li>
+                        <li class="breadcrumb-item">Create Exam</li>
+                        <li class="breadcrumb-item">Add Questions</li>
                     </ol>
                 </div>
 
@@ -201,156 +179,101 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
+                               
 
-
-
-
-                                <div id="verticalcenter" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="vcenter" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title" id="vcenter">Do you want to Sign out?</h4>
-                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <h4></h4>
-                                                <p></p>
-                                            </div>
-                                            <div ng-controller="logout" class="modal-footer">
-                                            <center>
-                                                <a href="#" ng-click="postData()" type="button" class="btn btn-danger waves-effect" >Sign out</a>
-                                                <a href="#" type="button" class="btn btn-success waves-effect" data-dismiss="modal">Close</a>
-                                            </center>
-                                            </div>
-                                        </div>
-                                        <!-- /.modal-content -->
-                                    </div>
-                                    <!-- /.modal-dialog -->
-                                </div>
-                                
-                                
-
-                                <div class="row">
+                   <div ng-controller="Addquestion"  class="row">
                     <div class="col-lg-12">
                         <div class="card card-outline-info">
-                            <div class="card-header">
-                                <center><h4 class="m-b-0 text-white">Update Profile</h4></center>
-                            </div><br>
-<!--                             <center><span style="color: green"><h3>${messagesuccess}</h3></span>
-                            <span style="color: red"><h3>${messageerror}</h3></span>
-                            </center> -->
-                            
+                            <div align="center" class="card-header">
+                                <h4 class="m-b-0 text-white">Question Addition for Exam ID : {{examid}}  </h4>                                
+                            </div>                           
                             <div class="card-body">
-
- <form ng-controller='UpdateController' ng-submit="postData()" class="form-horizontal" name="myForm" role="form">
+                                <form name="myForm" id="formid" class="form-horizontal ">
+                                <div>
                                     <div class="form-body">
-                                        <h3 class="box-title">Person Info</h3>
-                                        <hr class="m-t-0 m-b-40">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label class="control-label text-right col-md-3 required">First Name</label>
-                                                    <div class="col-md-9">
-                                                    <input type="text" path="fname" name="fname" ng-value="fname" ng-model="fname" id="fname" class="form-control"  maxlength="30"  required="true">
-                                                         </div>
-                                                </div>
-                                            </div>
-                                            <!--/span-->
-                                            <div class="col-md-6">
-                                                <div class="form-group  row">
-                                                    <label class="control-label text-right col-md-3 ">Middle Name</label>
-                                                    <div class="col-md-9">
-                                                        <input type="text" path="mname" name="mname" ng-value="mname" ng-model="mname" id="mname" class="form-control " placeholder="" maxlength="30">
-                                                         </div>
-                                                </div>
-                                            </div>
-                                            <!--/span-->
+                                        <div class="form-group row">
+                                            <label class="control-label text-right col-md-3">Question 	<span style="color: red">&#42;</span></label>
+                                            <div class="col-md-9">
+                                                <input type="text" ng-model="question" placeholder="Write question" maxlength="100" required="required" class="form-control">
+                                                 </div>
                                         </div>
-                                            <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label class="control-label text-right col-md-3 required">Last Name</label>
-                                                    <div class="col-md-9">
-                                                    <input type="text" path="lname" name="lname" ng-value="lname" ng-model="lname" id="lname" class="form-control"  maxlength="30"  required="true" >
-                                                         </div>
-                                                </div>
-                                            </div>
-                                            <!--/span-->
-
-                                            <!--/span-->
-                                        </div>
-                                        <!--/row-->
-
-                                        <!--/row-->
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label class="control-label text-right col-md-3 required">Phone Number </label>
-                                                    <div class="col-md-9">
-                                                        <input path="phone"  ng-model="phone" id="phone" type="text"  ng-value="phone" name="phone" maxlength="10" class="form-control" required="true" >
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label class="control-label text-right col-md-3 required">Email ID</label>
-                                                    <div class="col-md-9">
-                                                        <input type="text" path="email" name="email" ng-model="email" ng-value="email"  id="email" maxlength="70"   class="form-control"  required="true" readonly="true" >
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-
-                                            <!--/span-->
-                                            <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label class="control-label text-right col-md-3 required">Institute </label>
-                                                    <div class="col-md-9">
-                                                        <input type="text" path="institute" name="institute" ng-value="institute" ng-model="institute"  id="institute" maxlength="50" class="form-control" required="true" >
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!--/span-->
-                                        </div>
-                                        <!--/row-->
-
-                                        <!--/row-->
                                     </div>
-                                    <hr>
-                                    <center>
+                                    <div class="form-body">
+                                        <div class="form-group row">
+                                            <label class="control-label text-right col-md-3">Option 1<span style="color: red">&#42;</span></label>
+                                            <div class="col-md-9">
+                                                <input type="text" maxlength="70" id="opt1" ng-model="opt1" required="required" placeholder="Option 1" class="form-control">
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-body">
+                                        <div class="form-group row">
+                                            <label class="control-label text-right col-md-3">Option 2<span style="color: red">&#42;</span></label>
+                                            <div class="col-md-9">
+                                                <input type="text" maxlength="70" id="opt2" ng-model="opt2" required="required" placeholder="Option 2" class="form-control">
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-body">
+                                        <div class="form-group row">
+                                            <label class="control-label text-right col-md-3">Option 3<span style="color: red">&#42;</span></label>
+                                            <div class="col-md-9">
+                                                <input type="text" maxlength="70" id="opt3" ng-model="opt3" required="required" placeholder="Option 3" class="form-control">
+                                                
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-body">
+                                        <div class="form-group row">
+                                            <label class="control-label text-right col-md-3">Option 4<span style="color: red">&#42;</span></label>
+                                            <div class="col-md-9">
+                                                <input type="text" maxlength="70" id="opt4" ng-model="opt4" required="required" placeholder="Option 4" class="form-control">
+                                                
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-body">
+                                        <div class="form-group row">
+                                            <label class="control-label text-right col-md-3">Correct Answer<span style="color: red">&#42;</span></label>
+                                            <div class="col-md-9">
+                                                <input type="text" maxlength="70" id="crtans" ng-model="crtans" required="required" placeholder="Correct Ans" class="form-control">
+                                                <span id='message'></span>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <hr></hr>
+                                    </div>
                                     <div class="form-actions">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div  class="row">
+                                              
+                                                    <div  class="offset-sm-3 col-md-9">
+                                                    	 <button ng-disabled="myForm.$invalid" ng-click="addquestion()" id="btnadd" type="reset" class="btn btn-outline-info"> <i class="fa fa-plus"></i> Add Question</button>
+                                                        <button ng-disabled="myForm.$invalid" ng-click="postData()" id="btnsubmit" type="reset" class="btn btn-success"> <i class="fa fa-check"></i> Submit</button>
 
-                                        <div class="row" >
-                                            <div class="col-lg-12">
-                                                <div class="row">
-
-                                                    <div class="col-md-offset-3 col-lg-12">
-                                                        <button  ng-disabled="myForm.$invalid" id="submit" type="submit" class="btn btn-success">Submit</button>
-                                                        <button onclick="location.href='teacherdash.html'" type="button" class="btn btn-inverse">Cancel</button>
-                                                        <br>
                                                     </div>
-                                                    </br>
+                                                    <div class="offset-sm-3 col-md-9">
+                                                    	
+                                                        
+                                                       
+                                                    </div>
                                                 </div>
                                             </div>
-                                            
                                         </div>
-                                        </div>
-                                </center>
-
-                                    
+                                    </div>
                                 </form>
-
-
-  </div>
-                        </div>
-                    </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- ============================================================== -->
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
                 <!-- ============================================================== -->
@@ -362,29 +285,32 @@
                 <!-- End Right sidebar -->
                 <!-- ============================================================== -->
             </div>
-            <!-- ============================================================== -->
-            <!-- End Container fluid  -->
-            <!-- ============================================================== -->
+
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
+            
             <footer class="footer">
                 © 2020 Prep-UP Web APP
             </footer>
+            
             <!-- ============================================================== -->
             <!-- End footer -->
             <!-- ============================================================== -->
+            
         </div>
         <!-- ============================================================== -->
         <!-- End Page wrapper  -->
         <!-- ============================================================== -->
-    </div></div>
+    </div>
     <!-- ============================================================== -->
     <!-- End Wrapper -->
     <!-- ============================================================== -->
+    
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
+    
     <script src="assets/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="assets/plugins/bootstrap/js/popper.min.html"></script>
@@ -405,20 +331,39 @@
     <!-- Style switcher -->
     <!-- ============================================================== -->
     <script src="assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
-     <script>
+	<script>
+	$('#btnadd #btnsubmit').prop('disabled', true);
+$('#opt1, #opt2,#opt3,#opt4,#crtans').on('keyup', function () {
+	if($('#crtans').val()!==null && $('#opt1').val()!==null && $('#opt2').val()!==null && $('#opt3').val()!==null && $('#opt4').val()!==null){
+	  if ($('#crtans').val() == $('#opt1').val()) {
+	    $('#message').html('').css('color', 'green');
+		$(' #btnadd #btnsubmit').prop('disabled', false);
+	  } 
+	  else if ($('#crtans').val() == $('#opt2').val()) {
+		    $('#message').html('').css('color', 'green');
+			$(' #btnadd #btnsubmit').prop('disabled', false);
+		  }
+	  else if ($('#crtans').val() == $('#opt3').val()) {
+		    $('#message').html('').css('color', 'green');
+			$(' #btnadd #btnsubmit').prop('disabled', false);
+		  }
+	  else if ($('#crtans').val() == $('#opt4').val()) {
+		    $('#message').html('').css('color', 'green');
+			$('#btnadd #btnsubmit').prop('disabled', false);
+		  }
+	  else 
+	    $('#message').html('Not Matching, Correct ans must be from above option').css('color', 'red');
+	  $('#btnadd #btnsubmit').prop('disabled', true);
+	} 
+	});
+</script>
+    
+ 	<script>
 	if(sessionStorage.getItem("userDetails")==null) {
 	$(document).ready(function() {
 		location.replace("login.html");
 		});
 	}
-	
-    $(document).ready(function() {
-        $(document.getElementById("phone")).attr({
-           "maxlength" : 10,        // substitute your own
-           "minlength" : 10,
-           "min": 4444444444   // values (or variables) here
-        });
-    });
-</script>
+	</script> 
 </body>
 </html>
