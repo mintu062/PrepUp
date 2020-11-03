@@ -229,30 +229,102 @@ app.controller('CreateExam', function ($scope, $http) {
 		$scope.username=obj.fname +" "+ obj.lname;	
 		
 			string=sessionStorage.getItem("classID");
-		$scope.classId =string;
-				
-
-		$scope.postData = function() {	
+				$scope.classId =string;
+				$scope.postData = function() {	
 					const body2={			
-	"examname":$scope.examname,"examdsc":$scope.examdsc,
-	"examdate":$scope.examdate,"examduration" : $scope.examduration,"classId":$scope.classId
-}
- console.log("hello");
-console.log(JSON.stringify(body2));
-		 
+			"eName":$scope.examname,"classId":$scope.classId,"date":$scope.examdate,"duration" :$scope.examduration,"instruction":$scope.examdsc	 
+					}
+
+			/*console.log(JSON.stringify(body2));*/
+			$http.post(baseurl+"/createexam",body2)
+            .then(function(resp) {
+                /*$scope.token = resp.data.token;*/
+				const status_code = resp.data.examId;
+				sessionStorage.setItem("examid",status_code);
+				if(status_code !==null)				
+				{	
+					alert("Class Creation Success");
+					location.replace("addquestions.html")
+					
+					
+				}
+				else
+				{						
+					$scope.message= resp.data.message;
+					alert("Class Creation Failed")
+				}
+               
+            }, function error(resp) {
+    
+    });
+	
+	
     };
 
 	
 		
 });
 
+
+app.controller('Addquestion', function ($scope, $http) {
+	string=sessionStorage.getItem("userDetails");
+		var obj =JSON.parse(string);
+		$scope.username=obj.fname +" "+ obj.lname;	
+			$scope.questionsize=9;
+			string=sessionStorage.getItem("examid");
+				$scope.examid =string;				
+				 var a=[];
+			$scope.bool=false;
+			$scope.a=[];
+				$scope.addquestion=function(){					 
+					const obj={
+						"question":$scope.question,"optionA":$scope.opt1,"optionB":$scope.opt2,"optionC":$scope.opt3,"optionD":$scope.opt4,
+						"answer":$scope.crtans
+					}
+					a.push(obj);
+					
+					sessionStorage.setItem("examquestion",JSON.stringify(a));
+					};
+					
+				$scope.postData = function() {	
+					$scope.addquestion();
+					a=JSON.parse(sessionStorage.getItem("examquestion"));
+					const body2={
+						"eCode":$scope.examid,
+						"questions":a
+					}	
+					       $http.post(baseurl+"/addquestions",body2)
+            .then(function(resp) {
+                /*$scope.token = resp.data.token;*/
+               const status_code = resp.data.status_code;
+				if(status_code==200)				
+				{	
+					alert(resp.data.message);
+					location.replace("teacherdash.html")
+					console.log(body2);
+					sessionStorage.removeItem("examquestion");
+					sessionStorage.removeItem("examid");
+					sessionStorage.removeItem("classID");
+				}
+				else
+				{						
+					$scope.message= resp.data.message;
+				}
+            }, function error(resp) {
+    
+    });
+
+					
+    }
+
+});
 app.controller('TeacherClassesDetails', function ($scope, $http) {
 	string=sessionStorage.getItem("userDetails");
 		var obj =JSON.parse(string);
 		$scope.username=obj.fname +" "+ obj.lname;	
 		
 			$scope.classId=sessionStorage.getItem("classID");
-		console.log($scope.classId);
+		//console.log($scope.classId);
 		
 				
 			const body2={  "classId":$scope.classId } 

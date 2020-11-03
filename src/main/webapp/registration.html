@@ -44,8 +44,7 @@
 					</span>
 					<span align="center" ><h3 style="color: red">{{message}}</h3></span>
 					<span align="center" ><h3 style="color: green">{{message1}}</h3></span>
-<!-- 					<span align="center" ><h3 style="color: red">{{message}}</h3></span>
-					<span align="center" ><h3 style="color: green">{{messagesuccess}}</h3></span> -->
+
                     <div class="wrap-input100 validate-input" data-validate = "Enter Character Only">
 						<input path="fname" class="input100" ng-model="fname" type="text" name="fname" maxlength="15">
 						<span class="focus-input100" data-placeholder="First Name"></span>
@@ -62,7 +61,7 @@
 					</div>       
                     
                     <div class="wrap-input100 validate-input" data-validate = "Enter Valid phone number">
-						<input path="phone" class="input100" ng-model="phone" type="number" name="phone" maxlength="10">
+						<input path="phone" class="input100" id="phone" ng-model="phone" type="number" name="phone" maxlength="10">
 						<span class="focus-input100" data-placeholder="Phone Number"></span>
 					</div>
                     <div class="wrap-input100 validate-input" data-validate = "Valid Institute Name">
@@ -71,8 +70,8 @@
 					</div>
 					
                     <div class="wrap-input100 validate-input" data-validate = "Role Name">
-						<select  class="input100" ng-model="role" type="role" placeholder="Select Role" name="role" maxlength="45">
-							<option selected="trues" value="Teacher">Teacher</option>
+						<select  class="input100" ng-model="role" type="role" placeholder="Select Role" required="required" name="role" >
+							<option selected="selected" value="Teacher">Teacher</option>
 							<option value="Student">Student</option>
 						</select>
 						<span class="focus-input100" ></span>
@@ -148,6 +147,16 @@
 		$('#form_id #btnSubmit').prop('disabled', disable);
 		});
 	});
+	
+
+</script>
+<script >
+$(document).ready(function() {
+    $(document.getElementById("phone")).attr({
+       "maxlength" : 10,        // substitute your own
+       "minlength" : 10  // values (or variables) here
+    });
+});
 </script>
 </body>
 </html>
