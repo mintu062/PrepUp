@@ -191,8 +191,9 @@ public int changePass(ChangePassDetails changePassDetails) {
 
 
 	public int resetPass(String email ,String pass) {
-		System.out.println(email);
-		System.out.println(pass);
+		/*
+		 * System.out.println(email); System.out.println(pass);
+		 */
 		return jdbcTemplate.update(
 	            "update userdetails set password = ? where emailid = ?", 
 	            pass, email);
