@@ -182,5 +182,22 @@ public int changePass(ChangePassDetails changePassDetails) {
 			}
 			return 0;
 		}
+
+	public int isValidEmail(String email) {
+		String sql="select count(*) from userdetails where emailid=?";
+	    return jdbcTemplate
+	            .queryForObject(sql,new Object[] {email},Integer.class);
+	}
+
+
+	public int resetPass(String email ,String pass) {
+		System.out.println(email);
+		System.out.println(pass);
+		return jdbcTemplate.update(
+	            "update userdetails set password = ? where emailid = ?", 
+	            pass, email);
+		
+	}
+
 		
 }

@@ -1,21 +1,30 @@
 package com.prepup.service;
 
 import java.util.UUID;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
 
 import com.prepup.dao.UserDetailsDao;
 import com.prepup.model.ChangePassDetails;
+import com.prepup.model.EmailId;
 import com.prepup.model.User;
 import com.prepup.model.UserDetails;
 import com.prepup.model.UserUpdateDetails;
+import com.prepup.rest.model.Status;
 import com.prepup.vo.UserDetailsVO;
 
 @Service
 public class UserDetailsService {
 	@Autowired
 	UserDetailsDao userdetailsdao;
+	@Autowired
+	UserDetailsService userDetailsService;
+	@Autowired
+    private JavaMailSender javaMailSender;
 	
 	public Boolean isValidUser(User user) {
 		UserDetailsVO userDetailsVO= new UserDetailsVO();
@@ -137,5 +146,40 @@ public Boolean changePass(ChangePassDetails changePassDetails) {
 
 	
 }
+
+public Status isEmailValid(EmailId email) {
+	
+	Status status=new Status();
+	 if(userdetailsdao.isValidEmail(email.getEmailid())>0) {
+		 
+        String uuid = UUID.randomUUID().toString();
+		String pass=(uuid.substring(26,36));
+			if (userdetailsdao.resetPass(email.getEmailid(), pass)>0);
+			{
+				userDetailsService.sendEmail(email.getEmailid(), pass);
+				status.setStatus_code(200);
+		        status.setMessage("Your new password is send to your email id");
+			}
+        }        
+        else {
+        	status.setStatus_code(400);
+	        status.setMessage("Your entered email is not registered");
+        }
+	 return status;
+
+	
+}
+
+		public void sendEmail(String email,String pass) {
+			
+			SimpleMailMessage msg = new SimpleMailMessage();
+		    msg.setTo(email);
+		
+		    msg.setSubject("Reset Password");
+		    msg.setText("Your new auto generated password is: "+pass);
+		
+		    javaMailSender.send(msg);
+			
+		} 
 
 }
