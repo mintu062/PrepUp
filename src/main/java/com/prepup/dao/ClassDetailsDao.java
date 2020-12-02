@@ -78,4 +78,22 @@ public class ClassDetailsDao {
 //	        jdbcTemplate.queryForList(
 //	                sql, new Object[]{teacherId}, BeanPropertyRowMapper.newInstance(ClassDetailsVO.class));
 	}
+	
+	
+	public int isValidPasskey(String passkey) {
+		String sql="select count(*) from classdetails where classpasskey=?";
+	    return jdbcTemplate
+	            .queryForObject(sql,new Object[] {passkey},Integer.class);
+	}
+	
+	public String findClassIdByPasskey(String passkey) {
+		 jdbcTemplate = new JdbcTemplate(dataSource);
+	        String sql = "SELECT * FROM classdetails where classpasskey=?";
+	        ClassDetailsVO classDetailsVO = new ClassDetailsVO();
+	        classDetailsVO = jdbcTemplate.queryForObject(sql, new Object[]{passkey}, BeanPropertyRowMapper.newInstance(ClassDetailsVO.class));
+	        
+	        return classDetailsVO.getClassId();
+//	        jdbcTemplate.queryForList(
+//	                sql, new Object[]{teacherId}, BeanPropertyRowMapper.newInstance(ClassDetailsVO.class));
+	}
 }
