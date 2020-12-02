@@ -7,9 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.prepup.dao.ClassDetailsDao;
+import com.prepup.dao.StudentClassDao;
 import com.prepup.model.ClassId;
 import com.prepup.model.CreateClassDetails;
+import com.prepup.model.JoinClassData;
+import com.prepup.model.StudentClassTeacher;
+import com.prepup.model.StudentId;
 import com.prepup.model.TeacherId;
+import com.prepup.rest.model.Status;
 import com.prepup.vo.ClassDetailsVO;
 
 
@@ -19,6 +24,9 @@ public class ClassDetailsService {
 	
 	@Autowired
 	ClassDetailsDao classDetailsDao;
+	
+	@Autowired
+	StudentClassDao studentClassDao;
 	
 	
 public Boolean createClass(CreateClassDetails classDetails) {
@@ -57,5 +65,36 @@ public ClassDetailsVO findClassByCid(ClassId cid) {
 	
 	return classDetailsDao.findClassByCid(cid);
 }
+
+			public Status joinClass(JoinClassData joinClassData) {
+				
+				Status status= new Status();
+				if(classDetailsDao.isValidPasskey(joinClassData.getClassPasskey())>0) {
+					String classId = classDetailsDao.findClassIdByPasskey(joinClassData.getClassPasskey());
+					int classjoinStatus= studentClassDao.checkJoinStatus(joinClassData.getStudentId(), classId);
+					if(classjoinStatus==0) {
+						studentClassDao.joinClass(joinClassData.getStudentId(), classId);
+						status.setStatus_code(200);
+						status.setMessage("Class Joined Successfully");
+					}
+					
+					else {
+						status.setStatus_code(407);
+						status.setMessage("You are already joined in this class");
+					}
+				}
+				else {
+					status.setStatus_code(406);
+					status.setMessage("Invalid Passkey!");
+				}
+				
+				return status;
+			}
+
+
+				public List<StudentClassTeacher> viewClassByStudentId(StudentId studentId) {
+					return studentClassDao.findClassesByStudentId(studentId);
+//					return null;
+				}
 
 }
