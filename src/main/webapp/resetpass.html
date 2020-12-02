@@ -32,20 +32,18 @@
 <script src="angjs/angularapp.js"></script>
 	
 </head>
-<body ng-app='prepup'  ng-controller='LoginController' >
+<body ng-app='prepup'  ng-controller='ResetPassController' >
 	
 	<div class="limiter">
 		<div class="container-login100">
 		
 			<div class="wrap-login100">
-			<div >
-				<a class="ind" href="index.html">Back to home</a>
-				</div>
+			
 				<form name="myForm" id="form_id" ng-submit="postData()" class="login100-form validate-form">
-				
+				<div ><a class="ind" href="index.html">Back to home</a></div>
 				<br>
 					<span class="login100-form-title p-b-26">
-						Welcome
+						Password Reset
 					</span>
 
                     
@@ -54,38 +52,18 @@
 						<span class="focus-input100" data-placeholder="Email"></span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Enter password">
-						<span class="btn-show-pass">
-							<i class="zmdi zmdi-eye"></i>
-						</span>
-						<input path="password" class="input100" id="password" ng-model='password' type="password" name="password">
-						<span class="focus-input100" data-placeholder="Password"></span>
-					</div>
- 					<span align="center" ><h3 style="color: red">{{message}}</h3></span>
+					
+ 					<span align="center" ><h5 style="color: red">{{message}}</h5></span>
+ 					<br>
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
 							<button  id="btnSubmit" type="submit" class="login100-form-btn"  value="Submit">
-								Login
+								Reset
 							</button>
 						</div>
 					</div>
-					<div class="text-center p-t-30">
-						
-
-						<a class="txt2" href="resetpass.html">
-							Forgotten Password ?
-						</a>
-					</div>
-					<div class="text-center p-t-20">
-						<span class="txt1">
-							Don't have an account?
-						</span>
-
-						<a class="txt2" href="registration.html">
-							Sign Up
-						</a>
-					</div>
+					
 				</form>
 			</div>
 		</div>
