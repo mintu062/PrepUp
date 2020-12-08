@@ -405,6 +405,85 @@ app.controller('TeacherClassesDetails', function ($scope, $http) {
 
 
 
+//=========================================Join class Controller=========================================
+//								To Join the class created by the teacher
+//=================================================Start=================================================
+app.controller('JoinClass', function ($scope, $http) {
+	
+	
+			string=sessionStorage.getItem("userDetails");
+			var obj =JSON.parse(string);
+			
+			$scope.studentId=obj.userid;
+
+			$scope.postData = function() {	
+			const body2={			
+					"studentId":$scope.studentId,"classPasskey":$scope.passkey
+						} 
+		 $http.post(baseurl+"/joinclass",body2)
+            .then(function(resp) {
+				const status_code = resp.data.status_code;
+				if(status_code==200)				
+				{	
+					alert(resp.data.message);
+					location.replace("studentclasses.html");
+					
+					
+				}
+				else
+				{						
+					$scope.message= resp.data.message;
+					alert(resp.data.message)
+				}
+               
+            }, function error(resp) {
+    
+    			});
+    };		
+
+			
+	
+			
+});
+//=================================================End=================================================
+//=================================================End=================================================
+
+
+
+//========================================Student Classes Controller=====================================
+//									 To Show the classes Joined by a student
+//=================================================Start=================================================
+
+app.controller('StudentClasses', function ($scope, $http) {
+	string=sessionStorage.getItem("userDetails");
+		var obj =JSON.parse(string);
+		$scope.userid=obj.userid;		
+			const body2={  
+				"studentId":$scope.userid 
+					} 		
+						
+		 $http.post(baseurl+"/viewclasses",body2)
+            .then(function(resp) {
+				$scope.obj=resp.data;
+
+            }, function error(resp) {    
+   					 });	
+		$scope.postData = function(classs) {
+
+    	$scope.classid=classs.classid;
+		console.log($scope.classid);
+    	sessionStorage.setItem("classID",$scope.classid);
+
+		
+  };
+});
+//=================================================End=================================================
+//=================================================End=================================================
+
+
+
+
+
 //========================================Reset Password Controller======================================
 //							To Reset the forgotten Password of Existing User
 //=================================================Start=================================================

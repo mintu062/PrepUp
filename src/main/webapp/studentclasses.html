@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
-<head>
+<html lang="en">
 
-  <meta charset="utf-8">
+
+<head>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,7 +11,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
-    <title>Prep-UP|| Update Profile</title>
+    <title>Prep-UP|| Student Classes</title>
     <!-- Bootstrap Core CSS -->
     <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -24,13 +25,11 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-
 		<script src="angjs/angular.min.js"></script>
 		<script src="angjs/angularapp.js"></script>
 </head>
 
-<body  ng-app='prepup' class="fix-header card-no-border">
-
+<body ng-app='prepup' class="fix-header card-no-border">
 
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
@@ -49,7 +48,7 @@
                 <!-- Logo -->
                 <!-- ============================================================== -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="Dashboard.html">
+                    <a class="navbar-brand" href="studentdash.html">
                         <!-- Logo icon --><b>
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
@@ -94,7 +93,7 @@
                                             <div class="u-img"><img src="assets/images/users/1.jpg" alt="user"></div>
                                             <div ng-controller='ViewUser' class="u-text">
                                                 <h3>{{user}}</h3>
-                                                <p>Student </p>
+                                                <p>Student</p>
 <!--                                                 <p class="text-muted">Prep-Up</p> -->
                                         </div></center>
                                         </div>
@@ -108,12 +107,6 @@
                                     <li><a href="#" alt="default" data-toggle="modal" data-target="#verticalcenter" ><i class="fa fa-power-off"></i> Logout</a></li>
                                 </ul>
                             </div>
-
-
-
-
-
-
                         </li>
                     </ul>
                 </div>
@@ -145,7 +138,7 @@
                 <!-- End User profile text-->
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
-                                        <ul id="sidebarnav">
+                    <ul id="sidebarnav">
                         <li class="nav-devider"></li>
 
                         <li> <a class=" waves-effect waves-dark" href="studentdash.html" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Home </span></a>
@@ -177,12 +170,12 @@
             <!-- ============================================================== -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-themecolor">Update Profile</h3>
+                    <h3 class="text-themecolor">My classes</h3>
                 </div>
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="studentdash.html">Home</a></li>
-                        <li class="breadcrumb-item">Update Profile</li>
+                        <li class="breadcrumb-item">My classes</li>
                     </ol>
                 </div>
 
@@ -201,10 +194,6 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-
-
-
-
                                 <div id="verticalcenter" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="vcenter" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
@@ -218,7 +207,7 @@
                                             </div>
                                             <div ng-controller="logout" class="modal-footer">
                                             <center>
-                                                <a href="#" ng-click="postData()" type="button" class="btn btn-danger waves-effect" >Sign out</a>
+                                                <a ng-click="postData()" type="button" class="btn btn-danger waves-effect" >Sign out</a>
                                                 <a href="#" type="button" class="btn btn-success waves-effect" data-dismiss="modal">Close</a>
                                             </center>
                                             </div>
@@ -228,7 +217,9 @@
                                     <!-- /.modal-dialog -->
                                 </div>
                                 
-                                                                <div class="modal fade" ng-controller='JoinClass' id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
+                                
+                                
+                                <div class="modal fade" ng-controller='JoinClass' id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -240,7 +231,7 @@
                                                     
                                                     <div class="form-group">
                                                         <label for="recipient-name" class="control-label">Passkey:</label>
-                                                        <input type="text" ng-model="passkey" required="required" maxlength="8" minlength="8" class="form-control" id="recipient-name1">
+                                                        <input type="text" ng-model="passkey" class="form-control" required="required" maxlength="8" minlength="8"  id="recipient-name1">
                                                     </div>
                                                     <hr>
                                                    <div align="center">
@@ -255,124 +246,29 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card card-outline-info">
-                            <div class="card-header">
-                                <center><h4 class="m-b-0 text-white">Update Profile</h4></center>
-                            </div><br>
-<!--                             <center><span style="color: green"><h3>${messagesuccess}</h3></span>
-                            <span style="color: red"><h3>${messageerror}</h3></span>
-                            </center> -->
-                            
-                            <div class="card-body">
-
- <form ng-controller='UpdateController' ng-submit="postData()" class="form-horizontal" name="myForm" role="form">
-                                    <div class="form-body">
-                                        <h3 class="box-title">Person Info</h3>
-                                        <hr class="m-t-0 m-b-40">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label class="control-label text-right col-md-3 required">First Name</label>
-                                                    <div class="col-md-9">
-                                                    <input type="text" path="fname" name="fname" ng-value="fname" ng-model="fname" id="fname" class="form-control"  maxlength="30"  required="true">
-                                                         </div>
-                                                </div>
-                                            </div>
-                                            <!--/span-->
-                                            <div class="col-md-6">
-                                                <div class="form-group  row">
-                                                    <label class="control-label text-right col-md-3 ">Middle Name</label>
-                                                    <div class="col-md-9">
-                                                        <input type="text" path="mname" name="mname" ng-value="mname" ng-model="mname" id="mname" class="form-control " placeholder="" maxlength="30">
-                                                         </div>
-                                                </div>
-                                            </div>
-                                            <!--/span-->
-                                        </div>
-                                            <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label class="control-label text-right col-md-3 required">Last Name</label>
-                                                    <div class="col-md-9">
-                                                    <input type="text" path="lname" name="lname" ng-value="lname" ng-model="lname" id="lname" class="form-control"  maxlength="30"  required="true" >
-                                                         </div>
-                                                </div>
-                                            </div>
-                                            <!--/span-->
-
-                                            <!--/span-->
-                                        </div>
-                                        <!--/row-->
-
-                                        <!--/row-->
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label class="control-label text-right col-md-3 required">Phone Number </label>
-                                                    <div class="col-md-9">
-                                                        <input path="phone"  ng-model="phone" id="phone" type="text"  ng-value="phone" name="phone" maxlength="10" class="form-control" required="true" >
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label class="control-label text-right col-md-3 required">Email ID</label>
-                                                    <div class="col-md-9">
-                                                        <input type="text" path="email" name="email" ng-model="email" ng-value="email"  id="email" maxlength="70"   class="form-control"  required="true" readonly="true" >
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-
-                                            <!--/span-->
-                                            <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label class="control-label text-right col-md-3 required">Institute </label>
-                                                    <div class="col-md-9">
-                                                        <input type="text" path="institute" name="institute" ng-value="institute" ng-model="institute"  id="institute" maxlength="50" class="form-control" required="true" >
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!--/span-->
-                                        </div>
-                                        <!--/row-->
-
-                                        <!--/row-->
-                                    </div>
-                                    <hr>
-                                    <center>
-                                    <div class="form-actions">
-
-                                        <div class="row" >
-                                            <div class="col-lg-12">
-                                                <div class="row">
-
-                                                    <div class="col-md-offset-3 col-lg-12">
-                                                        <button  ng-disabled="myForm.$invalid" id="submit" type="submit" class="btn btn-success">Submit</button>
-                                                        <button onclick="location.href='teacherdash.html'" type="button" class="btn btn-inverse">Cancel</button>
-                                                        <br>
-                                                    </div>
-                                                    </br>
-                                                </div>
-                                            </div>
-                                            
-                                        </div>
-                                        </div>
-                                </center>
-
-                                    
-                                </form>
-
-
-  </div>
-                        </div>
-                    </div>
-
-                            </div>
+                                			
+                                 			<div align="center" class="col-12 m-t-30">
+							                        <h4 class="m-b-0"><b>Your Classes</b></h4>
+							                        
+							                        <p class="text-muted m-t-0 font-12">Click on the class name to view it details</p>
+							                    </div>
+							                    <div ng-controller="StudentClasses" class="row">
+											 <div  ng-repeat="classs in obj" class="col-md-4" >
+											 	<div >
+							                    <button ng-click="postData(classs)" class="btn btn-outline-info">
+							                        <div class="card text-center">							                        
+							                            <div class="card-body">
+							                                <h4 class="card-title">{{classs.className}}</h4>
+							                                <h6 class="card-title">{{classs.classDesc}}</h6>
+							                                <h6 class="card-title">Teahcer: {{classs.fname}} {{classs.lname}}</h6>
+							                            </div>
+							                        </div>
+							                        </button>
+							                    </div>
+							                </div></div>
+							                
+							                
+					            </div>
                         </div>
                     </div>
                 </div>
@@ -388,29 +284,32 @@
                 <!-- End Right sidebar -->
                 <!-- ============================================================== -->
             </div>
-            <!-- ============================================================== -->
-            <!-- End Container fluid  -->
-            <!-- ============================================================== -->
+
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
+            
             <footer class="footer">
                 © 2020 Prep-UP Web APP
             </footer>
+            
             <!-- ============================================================== -->
             <!-- End footer -->
             <!-- ============================================================== -->
+            
         </div>
         <!-- ============================================================== -->
         <!-- End Page wrapper  -->
         <!-- ============================================================== -->
-    </div></div>
+    </div>
     <!-- ============================================================== -->
     <!-- End Wrapper -->
     <!-- ============================================================== -->
+    
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
+    
     <script src="assets/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="assets/plugins/bootstrap/js/popper.min.html"></script>
@@ -437,14 +336,6 @@
 		location.replace("login.html");
 		});
 	}
-	
-    $(document).ready(function() {
-        $(document.getElementById("phone")).attr({
-           "maxlength" : 10,        // substitute your own
-           "minlength" : 10,
-           "min": 4444444444   // values (or variables) here
-        });
-    });
 </script>
 </body>
 </html>
