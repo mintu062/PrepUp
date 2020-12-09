@@ -1,15 +1,19 @@
 package com.prepup.service;
 
 import java.sql.Date;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.prepup.dao.ExamDetailsDao;
+import com.prepup.model.ClassId;
 import com.prepup.model.CreateClassDetails;
 import com.prepup.model.CreateExamDetails;
 import com.prepup.model.ExamId;
+import com.prepup.model.StudentClassTeacher;
+import com.prepup.rest.model.Status;
 import com.prepup.vo.ClassDetailsVO;
 import com.prepup.vo.ExamDetailsVO;
 
@@ -45,4 +49,17 @@ public ExamId createExam(CreateExamDetails createExam) {
 	        }
 		 return eid;
 	}
+
+
+public List<ExamDetailsVO> viewExamsByClassId(ClassId classId) {
+	Status status = new Status();
+	return examDetailsDao.viewExamsByClassId(classId);
+//	return status;
+}
+
+public List<ExamDetailsVO> viewExamsByClassIdFromCurrentDate(ClassId classId) {
+	Status status = new Status();
+	return examDetailsDao.viewExamsByClassIdFromCurrentDate(classId);
+//	return status;
+}
 }
