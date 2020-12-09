@@ -4,13 +4,18 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.prepup.model.ClassId;
+import com.prepup.model.StudentClassTeacher;
+import com.prepup.model.StudentId;
 import com.prepup.vo.ClassDetailsVO;
 import com.prepup.vo.ExamDetailsVO;
 
@@ -61,4 +66,20 @@ public class ExamDetailsDao {
     	
 	 
  }
+ public List<ExamDetailsVO> viewExamsByClassId(ClassId classId) {
+		
+		jdbcTemplate = new JdbcTemplate(dataSource);
+     String sql = "select * from examdetails where classid=?";
+     
+     return jdbcTemplate.query(sql, new Object[]{classId.getClassId()}, BeanPropertyRowMapper.newInstance(ExamDetailsVO.class));
+	}
+ 
+ public List<ExamDetailsVO> viewExamsByClassIdFromCurrentDate(ClassId classId) {
+		
+		jdbcTemplate = new JdbcTemplate(dataSource);
+  String sql = "select * from examdetails where classid=? and date>=current_date()";
+  
+  return jdbcTemplate.query(sql, new Object[]{classId.getClassId()}, BeanPropertyRowMapper.newInstance(ExamDetailsVO.class));
+	}
+
 }
